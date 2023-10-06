@@ -1,0 +1,23 @@
+:host {
+  padding: 0 10px;
+  max-width: 90vw;
+  height: 80px;
+
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(2, auto);
+  column-gap: 8px;
+  justify-items: start;
+  align-items: center;
+
+  .carousel-thumbnail {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .carousel-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
