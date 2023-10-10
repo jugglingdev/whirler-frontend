@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+@import 'buttons';
+
+// RESET
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// FONT
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+button, input {
+  font: inherit;
+}
