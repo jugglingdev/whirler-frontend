@@ -8,6 +8,7 @@ import { HeaderComponent } from './dashboard/header/header.component';
 import { CarouselListComponent } from './dashboard/carousel-list/carousel-list.component';
 import { CarouselComponent } from './shared/carousel/carousel.component';
 import { CarouselEditComponent } from './carousel-edit/carousel-edit.component';
+import { SlideComponent } from './shared/carousel/slide/slide.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CarouselEditComponent } from './carousel-edit/carousel-edit.component';
     HeaderComponent,
     CarouselListComponent,
     CarouselComponent,
-    CarouselEditComponent
+    CarouselEditComponent,
+    SlideComponent
   ],
   imports: [
     BrowserModule
