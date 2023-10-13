@@ -1,12 +1,16 @@
 @import '../../../variables.scss';
 
+:host {
+  width: 100%;
+}
+
 .container {
   padding: 35px 20px 20px 20px;
   background-color: $secondary-light;
 
   position: relative;
 
-  .custom-shape-divider-top-1697227303 {
+  .shape-divider {
     position: absolute;
     top: 0;
     left: 0;
@@ -15,14 +19,14 @@
     line-height: 0;
   }
 
-  .custom-shape-divider-top-1697227303 svg {
+  .shape-divider svg {
       position: relative;
       display: block;
       width: calc(100% + 1.3px);
       height: 32px;
   }
 
-  .custom-shape-divider-top-1697227303 .shape-fill {
+  .shape-divider .shape-fill {
       fill: #FFF4EF;
   }
 

@@ -2,11 +2,13 @@
 
 :host {
   position: relative;
+  min-width: 100vh;
 
   .container {
     margin: 0 auto;
     padding: 30px 30px 50px 30px;
     max-width: 900px;
+    min-height: calc(100vh - 180px);
 
     h1 {
       margin-bottom: 10px;
