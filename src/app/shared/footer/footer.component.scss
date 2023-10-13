@@ -1,0 +1,20 @@
+@import '../../../variables.scss';
+
+.container {
+  padding: 20px;
+  background-color: $secondary-light;
+
+  .attribution:any-link {
+    color: $french-violet;
+    text-decoration: none;
+  }
+
+  .attribution:hover {
+    color: adjust-color($aquamarine, $lightness: -15%);
+    text-decoration: underline;
+  }
+
+  .attribution:active {
+    color: $french-rose;
+  }
+}
