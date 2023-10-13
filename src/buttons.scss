@@ -1,4 +1,77 @@
-a[type="button"], button {
+@import 'variables';
+
+a[role="button"], button {
   width: 5rem;
   height: 5rem;
+  position: relative;
+  vertical-align: baseline;
+
+  color: $primary-light;
+  background-color: $french-violet;
+
+  border: none;
+  border-radius: 8px;
+  transition: all 250ms;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: adjust-color($french-violet, $lightness: $hover-lightness);
+    box-shadow: $hover-box-shadow;
+    transform: $hover-transform;
+  }
+
+  &:active {
+    box-shadow: $active-box-shadow;
+    transform: $active-transform;
+  }
+
+  .edit {
+    color: $primary-dark;
+    background-color: $aquamarine;
+
+    &:hover {
+      background-color: adjust-color($aquamarine, $lightness: $hover-lightness);
+      box-shadow: $hover-box-shadow;
+      transform: $hover-transform;
+    }
+
+    &:active {
+      box-shadow: $active-box-shadow;
+      transform: $active-transform;
+    }
+  }
+
+  .delete {
+    color: $primary-dark;
+    background-color: $french-rose;
+
+    &:hover {
+      background-color: adjust-color($french-rose, $lightness: $hover-lightness);
+      box-shadow: $hover-box-shadow;
+      transform: $hover-transform;
+    }
+
+    &:active {
+      box-shadow: $active-box-shadow;
+      transform: $active-transform;
+    }
+  }
+
+  .publish {
+    color: $primary-dark;
+    background-color: $jasmine;
+
+    &:hover {
+      background-color: adjust-color($jasmine, $lightness: $hover-lightness);
+      box-shadow: $hover-box-shadow;
+      transform: $hover-transform;
+    }
+
+    &:active {
+      box-shadow: $active-box-shadow;
+      transform: $active-transform;
+    }
+  }
 }
