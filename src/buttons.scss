@@ -4,6 +4,7 @@ a[role="button"], button {
   width: 5rem;
   height: 2rem;
 
+  font-weight: 400;
   text-align: center;
   line-height: 2rem;
   text-decoration: none;
@@ -28,7 +29,7 @@ a[role="button"], button {
     transform: $active-transform;
   }
 
-  /* Specific Buttons */
+  /* Dashboard Action Buttons */
 
   &.edit {
     color: $primary-dark;
