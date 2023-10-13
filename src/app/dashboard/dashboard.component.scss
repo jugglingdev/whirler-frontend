@@ -1,15 +1,22 @@
 @import '../../variables.scss';
 
-.container {
-  margin: 0 auto;
-  max-width: 900px;
+:host {
+  position: relative;
 
-  h1 {
-    margin: 30px 0 10px 0;
-    font-size: 3rem;
-  }
+  .container {
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 900px;
 
-  hr {
-    border-top: 1px solid $secondary-dark;
+    h1 {
+      margin-bottom: 10px;
+      font-size: 3rem;
+    }
+
+    hr {
+      border-top: 1px solid $secondary-dark;
+    }
   }
 }
+
+
