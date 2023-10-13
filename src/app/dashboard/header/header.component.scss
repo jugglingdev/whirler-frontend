@@ -1,6 +1,8 @@
+@import '../../../variables.scss';
+
 nav {
   padding: 10px;
-  background-color: lightgray;
+  background-color: $secondary-light;
 
   display: flex;
   flex-direction: row;
@@ -16,6 +18,14 @@ nav {
 
     .logo {
       object-fit: cover;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .create {
+      margin-left: 8px;
     }
   }
 

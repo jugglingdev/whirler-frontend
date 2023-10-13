@@ -3,19 +3,19 @@
 a[role="button"], button {
   width: 5rem;
   height: 2rem;
-  position: relative;
+
   text-align: center;
   line-height: 2rem;
+  text-decoration: none;
+  cursor: pointer;
 
   color: $primary-light;
   background-color: $french-violet;
 
   border: none;
   border-radius: 8px;
+  box-shadow: $box-shadow;
   transition: all 250ms;
-
-  text-decoration: none;
-  cursor: pointer;
 
   &:hover {
     background-color: adjust-color($french-violet, $lightness: $hover-lightness);
@@ -28,19 +28,14 @@ a[role="button"], button {
     transform: $active-transform;
   }
 
+  /* Specific Buttons */
+
   &.edit {
     color: $primary-dark;
     background-color: $aquamarine;
 
     &:hover {
       background-color: adjust-color($aquamarine, $lightness: $hover-lightness);
-      box-shadow: $hover-box-shadow;
-      transform: $hover-transform;
-    }
-
-    &:active {
-      box-shadow: $active-box-shadow;
-      transform: $active-transform;
     }
   }
 
@@ -50,13 +45,6 @@ a[role="button"], button {
 
     &:hover {
       background-color: adjust-color($french-rose, $lightness: $hover-lightness);
-      box-shadow: $hover-box-shadow;
-      transform: $hover-transform;
-    }
-
-    &:active {
-      box-shadow: $active-box-shadow;
-      transform: $active-transform;
     }
   }
 
@@ -66,13 +54,6 @@ a[role="button"], button {
 
     &:hover {
       background-color: adjust-color($jasmine, $lightness: $hover-lightness);
-      box-shadow: $hover-box-shadow;
-      transform: $hover-transform;
-    }
-
-    &:active {
-      box-shadow: $active-box-shadow;
-      transform: $active-transform;
     }
   }
 }

@@ -1,10 +1,22 @@
+@import '../../../variables.scss';
+
 .container {
-  margin: 20px 10px;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: $active-box-shadow;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    background-color: $secondary-light;
+    box-shadow: $hover-box-shadow;
+  }
 
   .buttons {
     display: flex;
