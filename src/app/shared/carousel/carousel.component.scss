@@ -1,5 +1,4 @@
 :host {
-  padding: 0 10px;
   max-width: 80vw;
   height: 80px;
 
@@ -16,6 +15,7 @@
   }
 
   .carousel-text {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
