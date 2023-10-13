@@ -1,13 +1,12 @@
-import { EventEmitter, Injectable, Output } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Carousel } from "./carousel/carousel.model";
 
 @Injectable({providedIn: 'root'})
 export class CarouselService {
-  @Output('') carouselList = new EventEmitter<Carousel[]>();
-  @Output('') carousel = new EventEmitter<Carousel>();
+  carouselSelected = new EventEmitter<Carousel>();
+  carouselsUpdated = new EventEmitter<Carousel[]>();
 
-
-  carousels: Carousel[] = [
+  private carousels: Carousel[] = [
     new Carousel(
       'Breakout Post',
       'In this post, I tell my story - what got me into coding',
@@ -31,20 +30,22 @@ export class CarouselService {
     ),
   ]
 
-  getAllCarousels() {
-    this.carousels.emit(this.carouselList);
+  getCarousels() {
+    return [...this.carousels];
   }
 
-  getCarousel(carousel: Carousel) {
-    this.carousels
+  selectCarousel(carousel: Carousel) {
+    this.carouselSelected.emit(carousel);
   }
 
-  addCarousel(carousel: Carousel) {
+  saveCarousel(carousel: Carousel) {
     this.carousels.push(carousel);
+    this.carouselsUpdated.emit(this.getCarousels());
   }
 
-  removeCarousel(carousel: Carousel) {
-    this.carousels.splice(this.carousels.indexOf(carousel), 1);
+  removeCarousel(id: number) {
+    this.carousels.splice(id, 1);
+    this.carouselsUpdated.emit(this.getCarousels());
   }
 
 }

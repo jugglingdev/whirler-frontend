@@ -1,1 +1,8 @@
-<app-carousel></app-carousel>
+<div *ngFor="let carousel of carousels; let i = index">
+  <app-carousel [carousel]="carousel"></app-carousel>
+
+  <button class="edit">Edit</button>
+  <button class="publish">Publish</button>
+  <button class="delete" (click)="removeCarousel(i)">Delete</button>
+</div>
+
