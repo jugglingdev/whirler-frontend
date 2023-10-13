@@ -1,10 +1,10 @@
 :host {
   padding: 0 10px;
-  max-width: 90vw;
+  max-width: 80vw;
   height: 80px;
 
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
   column-gap: 8px;
   justify-items: start;

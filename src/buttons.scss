@@ -2,9 +2,10 @@
 
 a[role="button"], button {
   width: 5rem;
-  height: 5rem;
+  height: 2rem;
   position: relative;
-  vertical-align: baseline;
+  text-align: center;
+  line-height: 2rem;
 
   color: $primary-light;
   background-color: $french-violet;
@@ -27,7 +28,7 @@ a[role="button"], button {
     transform: $active-transform;
   }
 
-  .edit {
+  &.edit {
     color: $primary-dark;
     background-color: $aquamarine;
 
@@ -43,7 +44,7 @@ a[role="button"], button {
     }
   }
 
-  .delete {
+  &.delete {
     color: $primary-dark;
     background-color: $french-rose;
 
@@ -59,7 +60,7 @@ a[role="button"], button {
     }
   }
 
-  .publish {
+  &.publish {
     color: $primary-dark;
     background-color: $jasmine;
 
