@@ -1,39 +1,69 @@
 @import '../../../variables.scss';
 
-nav {
-  padding: 10px;
-  background-color: $secondary-light;
+:host {
+  position: relative;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  nav {
+    padding: 20px 20px 45px 20px;
+    background-color: $secondary-light;
 
-  .nav-left {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    gap: 12px;
 
-    .logo {
-      object-fit: cover;
+    .nav-left {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+
+      .logo {
+        object-fit: cover;
+        transition: transform 1s ease-in-out;
+
+        &:hover {
+          transform: rotate(360deg);
+        }
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .create {
+        margin-left: 8px;
+      }
     }
 
-    h2 {
-      font-size: 2rem;
-    }
-
-    .create {
-      margin-left: 8px;
+    .nav-right {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
     }
   }
 
-  .nav-right {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 12px;
+  .custom-shape-divider-bottom-1697177866 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
   }
+
+  .custom-shape-divider-bottom-1697177866 svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 42px;
+  }
+
+  .custom-shape-divider-bottom-1697177866 .shape-fill {
+      fill: #FFF4EF;
+  }
+
 }

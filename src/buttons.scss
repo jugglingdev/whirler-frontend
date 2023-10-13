@@ -21,7 +21,6 @@ a[role="button"], button {
   &:hover {
     background-color: adjust-color($french-violet, $lightness: $hover-lightness);
     box-shadow: $hover-box-shadow;
-    transform: $hover-transform;
   }
 
   &:active {
