@@ -24,16 +24,12 @@
         transition: transform 1s ease-in-out;
 
         &:hover {
-          transform: rotate(360deg);
+          transform: rotate(720deg);
         }
       }
 
       h2 {
         font-size: 2rem;
-      }
-
-      .create {
-        margin-left: 8px;
       }
     }
 
@@ -46,7 +42,7 @@
     }
   }
 
-  .custom-shape-divider-bottom-1697177866 {
+  .shape-divider {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -55,14 +51,14 @@
     line-height: 0;
   }
 
-  .custom-shape-divider-bottom-1697177866 svg {
+  .shape-divider svg {
       position: relative;
       display: block;
       width: calc(100% + 1.3px);
-      height: 42px;
+      height: 36px;
   }
 
-  .custom-shape-divider-bottom-1697177866 .shape-fill {
+  .shape-divider .shape-fill {
       fill: $primary-light;
   }
 
