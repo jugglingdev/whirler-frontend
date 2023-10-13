@@ -1,8 +1,30 @@
 @import '../../../variables.scss';
 
 .container {
-  padding: 20px;
+  padding: 35px 20px 20px 20px;
   background-color: $secondary-light;
+
+  position: relative;
+
+  .custom-shape-divider-top-1697227303 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .custom-shape-divider-top-1697227303 svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 32px;
+  }
+
+  .custom-shape-divider-top-1697227303 .shape-fill {
+      fill: #FFF4EF;
+  }
 
   .attribution:any-link {
     color: $french-violet;
