@@ -10,6 +10,8 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { CarouselEditComponent } from './carousel-edit/carousel-edit.component';
 import { SlideComponent } from './shared/carousel/slide/slide.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { FooterComponent } from './shared/footer/footer.component';
     CarouselComponent,
     CarouselEditComponent,
     SlideComponent,
-    FooterComponent
+    FooterComponent,
+    PageNotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
