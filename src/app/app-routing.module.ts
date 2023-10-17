@@ -7,6 +7,7 @@ import { NgModule } from "@angular/core";
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'edit', component: CarouselEditComponent },
   { path: 'new', component: CarouselEditComponent },
   { path: 'signup', component: SignupComponent },

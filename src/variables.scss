@@ -1,6 +1,6 @@
 // COLORS
 
-$primary-light: #fff4ef;
+$primary-light: #fffDFD;
 $secondary-light: #FCE4D8;
 
 $primary-dark: #16001E;
@@ -15,9 +15,9 @@ $aquamarine: #10FFCB;
 
 $hover-lightness: 10%;
 
-$box-shadow:  rgba(0, 0, 0, 0.06) 0 2px 4px;
-$hover-box-shadow: rgba(0, 0, 0, 0.2) 0 4px 12px;
-$active-box-shadow:  rgba(0, 0, 0, 0.06) 0 2px 4px;
+$box-shadow:  rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+$hover-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+$active-box-shadow:  rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 $hover-transform: translateY(-1px);
 $active-transform: translateY(0px);
