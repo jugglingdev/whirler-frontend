@@ -1,0 +1,43 @@
+@import '../../variables.scss';
+
+.carousel-edit {
+
+  margin: 0 auto;
+  padding: 30px 30px 50px 30px;
+  max-width: 900px;
+
+  .slider {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .current-slide {
+      width: 500px;
+      height: 500px;
+
+      border: 1px solid $primary-dark;
+    }
+
+    .previous-slide,
+    .next-slide {
+      width: 300px;
+      height: 300px;
+
+      border: 1px solid $primary-dark;
+      opacity: .5;
+    }
+
+    button {
+      position: absolute;
+    }
+
+    .button-previous {
+      left: 100px;
+    }
+
+    .button-next {
+      right: 100px;
+    }
+  }
+}
