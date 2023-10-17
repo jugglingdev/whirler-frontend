@@ -12,19 +12,22 @@
     justify-content: space-between;
     align-items: center;
 
-    .current-slide {
-      width: 500px;
-      height: 500px;
+    .slide {
+      border: 1px solid $secondary-dark;
+      border-radius: 12px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 4px 12px;
 
-      border: 1px solid $primary-dark;
+    }
+
+    .current-slide {
+      width: 50%;
+      aspect-ratio: 1 / 1;
     }
 
     .previous-slide,
     .next-slide {
-      width: 300px;
-      height: 300px;
-
-      border: 1px solid $primary-dark;
+      width: 20%;
+      aspect-ratio: 1 / 1;
       opacity: .5;
     }
 
