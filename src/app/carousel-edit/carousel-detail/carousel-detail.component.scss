@@ -23,6 +23,12 @@
       width: 50%;
       aspect-ratio: 1 / 1;
       box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 60px 4px;
+
+      input,
+      textarea {
+        border: none;
+        outline: none;
+      }
     }
 
     .previous-slide,
