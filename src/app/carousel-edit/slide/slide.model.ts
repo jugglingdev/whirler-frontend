@@ -2,7 +2,8 @@ export class Slide {
 
   constructor (
     public title: string,
-    public preview: string,
+    public content: string,
+    public thumbnail: string,
   ){};
 
 }

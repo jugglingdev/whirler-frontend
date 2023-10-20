@@ -12,6 +12,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { CarouselCardComponent } from './dashboard/carousel-list/carousel-card/carousel-card.component';
 import { SlideComponent } from './carousel-edit/slide/slide.component';
+import { CarouselDetailComponent } from './carousel-edit/carousel-detail/carousel-detail.component';
+import { CarouselThumbnailsComponent } from './carousel-edit/carousel-thumbnails/carousel-thumbnails.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { SlideComponent } from './carousel-edit/slide/slide.component';
     SlideComponent,
     FooterComponent,
     PageNotFoundComponent,
+    CarouselDetailComponent,
+    CarouselThumbnailsComponent,
   ],
   imports: [
     BrowserModule,

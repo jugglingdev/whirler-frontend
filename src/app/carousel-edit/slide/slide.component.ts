@@ -10,7 +10,7 @@ export class SlideComponent {
   slide: Slide;
 
   constructor() {
-    this.slide = new Slide('Slide Title', 'Slide Thumbnail')
+    this.slide = new Slide('Slide Title', 'Slide Content', 'Slide Thumbnail')
   }
 
 }
