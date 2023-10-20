@@ -6,12 +6,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { CarouselListComponent } from './dashboard/carousel-list/carousel-list.component';
-import { CarouselComponent } from './shared/carousel/carousel.component';
 import { CarouselEditComponent } from './carousel-edit/carousel-edit.component';
-import { SlideComponent } from './shared/carousel/slide/slide.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CarouselCardComponent } from './dashboard/carousel-list/carousel-card/carousel-card.component';
+import { SlideComponent } from './carousel-edit/slide/slide.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +20,11 @@ import { AppRoutingModule } from './app-routing.module';
     SignupComponent,
     HeaderComponent,
     CarouselListComponent,
-    CarouselComponent,
+    CarouselCardComponent,
     CarouselEditComponent,
     SlideComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
