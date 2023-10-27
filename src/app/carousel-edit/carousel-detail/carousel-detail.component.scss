@@ -6,6 +6,10 @@
   padding: 50px 30px;
   max-width: 900px;
 
+  quill-editor {
+    width: 100%;
+  }
+
   .slider {
     position: relative;
     display: flex;

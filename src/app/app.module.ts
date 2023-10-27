@@ -14,6 +14,8 @@ import { CarouselCardComponent } from './dashboard/carousel-list/carousel-card/c
 import { SlideComponent } from './carousel-edit/slide/slide.component';
 import { CarouselDetailComponent } from './carousel-edit/carousel-detail/carousel-detail.component';
 import { CarouselThumbnailsComponent } from './carousel-edit/carousel-thumbnails/carousel-thumbnails.component';
+import { QuillModule } from 'ngx-quill';
+import { TemplateComponent } from './carousel-edit/slide/template/template.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,12 @@ import { CarouselThumbnailsComponent } from './carousel-edit/carousel-thumbnails
     PageNotFoundComponent,
     CarouselDetailComponent,
     CarouselThumbnailsComponent,
+    TemplateComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    QuillModule
   ],
   providers: [],
   bootstrap: [AppComponent]
