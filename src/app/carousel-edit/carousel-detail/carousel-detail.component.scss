@@ -1,4 +1,5 @@
 @import '../../../variables.scss';
+@import 'quill/dist/quill.snow.css';
 
 .carousel-detail {
 
@@ -6,17 +7,43 @@
   padding: 50px 30px;
   max-width: 900px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
   quill-editor {
     width: 100%;
+    margin: 0 auto;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &::ng-deep .ql-toolbar {
+      border-radius: 12px;
+      background-color: #FFF;
+      border: 1px solid $secondary-dark;
+    }
+
+    &::ng-deep .ql-container {
+      width: 420px;
+      height: 420px;
+      position: absolute;
+      top: 170px;
+      border: none;
+    }
   }
 
   .slider {
     position: relative;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    margin-bottom: 50px;
+    margin: 50px 0;
 
     .slide {
       border-radius: 12px;

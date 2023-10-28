@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Slide } from './slide.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { Slide } from './slide.model';
 })
 export class SlideComponent {
   slide: Slide;
+  @Input() slideContent: string;
 
   constructor() {
     this.slide = new Slide('Slide Title', 'Slide Content', 'Slide Thumbnail')
