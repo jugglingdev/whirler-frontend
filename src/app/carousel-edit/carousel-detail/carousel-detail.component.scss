@@ -30,9 +30,17 @@
     &::ng-deep .ql-container {
       width: 420px;
       height: 420px;
+      max-height: 420px;
       position: absolute;
       top: 170px;
       border: none;
+      overflow: hidden;
+
+      &::ng-deep .ql-editor {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
     }
   }
 

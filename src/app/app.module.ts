@@ -14,9 +14,10 @@ import { CarouselCardComponent } from './dashboard/carousel-list/carousel-card/c
 import { SlideComponent } from './carousel-edit/slide/slide.component';
 import { CarouselDetailComponent } from './carousel-edit/carousel-detail/carousel-detail.component';
 import { CarouselThumbnailsComponent } from './carousel-edit/carousel-thumbnails/carousel-thumbnails.component';
-import { QuillConfigModule, QuillModule } from 'ngx-quill';
 import { TemplateComponent } from './carousel-edit/slide/template/template.component';
 import { FormsModule } from '@angular/forms';
+import { QuillTextEditorComponent } from './carousel-edit/carousel-detail/quill-text-editor/quill-text-editor.component';
+import { QuillImageEditorComponent } from './carousel-edit/carousel-detail/quill-image-editor/quill-image-editor.component';
 
 @NgModule({
   declarations: [
@@ -33,18 +34,12 @@ import { FormsModule } from '@angular/forms';
     CarouselDetailComponent,
     CarouselThumbnailsComponent,
     TemplateComponent,
+    QuillTextEditorComponent,
+    QuillImageEditorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    QuillModule.forRoot(),
-    // QuillConfigModule.forRoot({
-    //   modules: {
-    //     toolbar: '#toolbar'
-    //   },
-    //   placeholder: 'Enter text...',
-    //   theme: 'snow'
-    // }),
     FormsModule
   ],
   providers: [],
