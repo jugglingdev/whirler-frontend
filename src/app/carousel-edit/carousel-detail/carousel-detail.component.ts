@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-detail',
   templateUrl: './carousel-detail.component.html',
   styleUrls: ['./carousel-detail.component.scss']
 })
-export class CarouselDetailComponent implements OnInit, AfterViewInit {
+export class CarouselDetailComponent {
   slideContent: string;
-  @ViewChild('quillEditor') quillEditor: ElementRef;
+  editTextMode = true;
+  editImageMode = true;
 
   // textarea = document.querySelector('.ql-container');
   // container = document.querySelector('.ql-editor');
@@ -23,13 +24,5 @@ export class CarouselDetailComponent implements OnInit, AfterViewInit {
   //     this.value = this.value.substring(0, this.value.length - 1);
   //   }
   // });
-
-  ngOnInit(): void {
-      console.log(this.quillEditor);
-  }
-
-  ngAfterViewInit(): void {
-    console.log(this.quillEditor);
-  }
 
 }
