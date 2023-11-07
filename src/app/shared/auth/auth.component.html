@@ -1,0 +1,37 @@
+<div class="container">
+  <img class="logo" src="../../../assets/logo.png" alt="logo" width="32px" height="32px">
+  <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <div class="form-group">
+      <input
+        type="email"
+        name="email"
+        id="email"
+        email
+        placeholder="Email"
+        ngModel
+        required>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+        ngModel
+        required
+        minlength="6">
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="!authForm.valid">
+      {{ isLoginMode ? 'Log In' : 'Sign Up' }}
+    </button>
+
+    <a
+      type="button"
+      routerLink="login">
+      <p>New here?  Sign up instead</p>
+    </a>
+
+  </form>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>
