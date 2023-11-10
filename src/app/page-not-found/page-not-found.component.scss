@@ -1,7 +1,7 @@
 div {
   margin: 0 auto;
   width: 50vw;
-  height: 100vh;
+  height: calc(100vh - 180px);
 
   display: flex;
   flex-direction: column;
