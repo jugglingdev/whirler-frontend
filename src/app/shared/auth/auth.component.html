@@ -1,5 +1,5 @@
 <div class="container">
-  <img class="logo" src="../../../assets/logo.png" alt="logo" width="32px" height="32px">
+  <img class="logo" src="../../../assets/logo.png" alt="logo" width="52px" height="52px">
   <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
     <div class="form-group">
       <input
@@ -21,6 +21,7 @@
     </div>
 
     <button
+      class="whirler-button"
       type="submit"
       [disabled]="!authForm.valid">
       {{ isLoginMode ? 'Log In' : 'Sign Up' }}
