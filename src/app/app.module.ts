@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignupComponent } from './signup/signup.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { CarouselListComponent } from './dashboard/carousel-list/carousel-list.component';
 import { CarouselEditComponent } from './carousel-edit/carousel-edit.component';
@@ -25,7 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     DashboardComponent,
-    SignupComponent,
     HeaderComponent,
     CarouselListComponent,
     CarouselCardComponent,

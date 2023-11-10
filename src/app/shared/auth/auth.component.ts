@@ -29,12 +29,20 @@ export class AuthComponent {
       {
         next: (res) => {
           authForm.reset();
-          this.router.navigate(['bookshelf']);
+          this.router.navigate(['dashboard']);
         },
         error: (error) => {
           this.errorMessage = error.message;
         }
       }
     );
+  }
+
+  onSwitchToSignUp() {
+    this.isLoginMode = false;
+  }
+
+  onSwitchToLogIn() {
+    this.isLoginMode = true;
   }
 }

@@ -1,4 +1,7 @@
-<div class="container">
+<app-header [isLoginMode]="isLoginMode"></app-header>
+
+<div class="auth-container">
+<div class="card-container">
   <img class="logo" src="../../../assets/logo.png" alt="logo" width="52px" height="52px">
   <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
     <div class="form-group">
@@ -29,10 +32,21 @@
 
     <a
       type="button"
-      routerLink="login">
+      *ngIf="isLoginMode"
+      (click)="onSwitchToSignUp()">
       <p>New here?  Sign up instead</p>
+    </a>
+
+    <a
+      type="button"
+      *ngIf="!isLoginMode"
+      (click)="onSwitchToLogIn()">
+      <p>Already have an account?  Log in</p>
     </a>
 
   </form>
   <p *ngIf="errorMessage">{{ errorMessage }}</p>
 </div>
+</div>
+
+<app-footer></app-footer>
