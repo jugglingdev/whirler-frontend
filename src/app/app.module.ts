@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { QuillTextEditorComponent } from './carousel-edit/carousel-detail/quill-text-editor/quill-text-editor.component';
 import { QuillImageEditorComponent } from './carousel-edit/carousel-detail/quill-image-editor/quill-image-editor.component';
 import { AuthComponent } from './shared/auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthComponent } from './shared/auth/auth.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

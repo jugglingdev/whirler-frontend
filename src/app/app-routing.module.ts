@@ -6,7 +6,7 @@ import { SignupComponent } from "./signup/signup.component";
 import { NgModule } from "@angular/core";
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: SignupComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'edit', component: CarouselEditComponent },
   { path: 'new', component: CarouselEditComponent },
