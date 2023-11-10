@@ -1,8 +1,28 @@
 div {
   margin: 0 auto;
   width: 50vw;
+  height: 100vh;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 12px;
+
+  .logo {
+    object-fit: cover;
+    animation: move 4s;
+    animation-delay: 2s;
+  }
+
+  @keyframes move {
+    50% {
+      transform: translateX(-60vw) rotate(-1080deg);
+      -webkit-animation-timing-function: ease-in;
+    }
+    50.001% {
+      transform: translateX(60vw) rotate(1080deg);
+      -webkit-animation-timing-function: ease-out;
+    }
+  }
 }
