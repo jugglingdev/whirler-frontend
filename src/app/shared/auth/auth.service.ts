@@ -32,7 +32,7 @@ export class AuthService {
   constructor (private http: HttpClient, private router: Router) {}
 
   autoLogin() {
-    const userData: UserData = JSON.parse(localStorage.getItem('userData'));
+    const userData: UserData = JSON.parse(localStorage.getItem('currentUser'));
 
     if (!userData) return;
     const { email, id, _token, _tokenExpirationDate } = userData;

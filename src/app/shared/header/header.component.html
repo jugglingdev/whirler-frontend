@@ -1,10 +1,10 @@
 <nav>
   <div class="nav-left">
     <img class="logo" src="../../../assets/logo.png" alt="logo" width="32px" height="32px">
-    <a [routerLink]="isLoggedIn ? '/dashboard' : '/auth'"><h2 class="title">Whirler</h2></a>
+    <a [routerLink]="isAuthenticated ? '/dashboard' : '/auth'"><h2 class="title">Whirler</h2></a>
   </div>
 
-  <div class="nav-right" *ngIf="isLoggedIn">
+  <div class="nav-right" *ngIf="isAuthenticated">
     <p>Welcome!</p>
     <img src="../../../assets/settings-light.png" alt="settings icon" width="20px" height="20px">
   </div>
