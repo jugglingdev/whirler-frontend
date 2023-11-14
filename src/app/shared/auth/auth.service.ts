@@ -29,7 +29,9 @@ export class AuthService {
   currentUser = new BehaviorSubject<User>(null);
   private tokenExpTimer: any;
 
-  constructor (private http: HttpClient, private router: Router) {}
+  constructor (private http: HttpClient, private router: Router) {
+    this.autoLogin();
+  }
 
   autoLogin() {
     const userData: UserData = JSON.parse(localStorage.getItem('userData'));
