@@ -7,7 +7,7 @@ import { AuthComponent } from "./shared/auth/auth.component";
 import { AuthGuard } from "./shared/auth/auth.guard";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'edit', component: CarouselEditComponent, canActivate: [AuthGuard] },

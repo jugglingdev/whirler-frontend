@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent {
   isLoginMode = true;
-  isLoggedIn = false;
   errorMessage: string = null;
   authObs: Observable<AuthResponse>;
 
@@ -29,11 +28,8 @@ export class AuthComponent {
     this.authObs.subscribe(
       {
         next: (res) => {
-          this.isLoggedIn = true;
           authForm.reset();
-
-          const destination = this.isLoggedIn ? 'dashboard' : '';
-          this.router.navigate([destination]);
+          this.router.navigate(['dashboard']);
         },
         error: (error) => {
           this.errorMessage = error.message;
