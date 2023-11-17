@@ -32,7 +32,7 @@
       height: 420px;
       max-height: 420px;
       position: absolute;
-      top: 170px;
+      top: 166px;
       border: none;
       overflow: hidden;
 
@@ -96,7 +96,11 @@
 
       color: $primary-dark;
       background-color: transparent;
+      border: none;
       box-shadow: none;
+      cursor: pointer;
+      
+      transition: opacity .3s ease;
       opacity: .5;
 
       &:hover {
