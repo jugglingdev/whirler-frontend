@@ -1,23 +1,6 @@
 <div class="carousel-detail">
 
-  <div id="text-toolbar" #textToolbar>
-
-    <select class="ql-size">
-      <option value="small"></option>
-      <option selected></option>
-      <option value="large"></option>
-      <option value="huge"></option>
-    </select>
-
-    <button class="ql-bold"></button>
-    <button class="ql-italic"></button>
-
-    <button class="ql-script" value="sub"></button>
-    <button class="ql-script" value="super"></button>
-  </div>
-
-  <app-quill-text-editor *ngIf="editTextMode" [textToolbar]="textToolbar"></app-quill-text-editor>
-  <app-quill-image-editor *ngIf="editImageMode"></app-quill-image-editor>
+  <app-quill-editor></app-quill-editor>
 
   <div class="slider">
     <div class="slide previous-slide">

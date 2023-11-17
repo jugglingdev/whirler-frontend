@@ -15,10 +15,9 @@ import { CarouselDetailComponent } from './carousel-edit/carousel-detail/carouse
 import { CarouselThumbnailsComponent } from './carousel-edit/carousel-thumbnails/carousel-thumbnails.component';
 import { TemplateComponent } from './carousel-edit/slide/template/template.component';
 import { FormsModule } from '@angular/forms';
-import { QuillTextEditorComponent } from './carousel-edit/carousel-detail/quill-text-editor/quill-text-editor.component';
-import { QuillImageEditorComponent } from './carousel-edit/carousel-detail/quill-image-editor/quill-image-editor.component';
 import { AuthComponent } from './shared/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
+import { QuillEditorComponent } from './carousel-edit/carousel-detail/quill-editor/quill-editor.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     CarouselDetailComponent,
     CarouselThumbnailsComponent,
     TemplateComponent,
-    QuillTextEditorComponent,
-    QuillImageEditorComponent,
     AuthComponent,
+    QuillEditorComponent,
   ],
   imports: [
     BrowserModule,
