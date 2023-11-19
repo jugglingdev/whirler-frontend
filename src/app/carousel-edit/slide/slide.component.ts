@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Slide } from './slide.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-slide',
@@ -10,8 +11,13 @@ export class SlideComponent {
   slide: Slide;
   @Input() slideContent: string;
 
-  constructor() {
+  constructor(private sanitizer: DomSanitizer) {
     this.slide = new Slide('Slide Title', 'Slide Content', 'Slide Thumbnail')
+  }
+
+  getSafeHtml(): SafeHtml {
+    // Validate and sanitize user-generated content!!
+    return this.sanitizer.bypassSecurityTrustHtml(this.slideContent);
   }
 
 }

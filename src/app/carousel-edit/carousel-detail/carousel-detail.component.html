@@ -1,6 +1,6 @@
 <div class="carousel-detail">
 
-  <app-quill-editor *ngIf="editTextMode"></app-quill-editor>
+  <app-quill-editor *ngIf="editTextMode" (editModeExited)="updateSlideContent($event)"></app-quill-editor>
 
   <div class="slider">
     <div class="slide previous-slide">

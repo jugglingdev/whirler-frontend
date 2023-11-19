@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import Quill from 'quill';
+import DeltaStatic from 'quill-delta';
 import { EditablesDataService } from './editable/editables.service';
 import { LocalStorageStateService } from './editable/local-storage-state.service';
 
@@ -9,9 +10,7 @@ import { LocalStorageStateService } from './editable/local-storage-state.service
   styleUrls: ['./quill-editor.component.scss']
 })
 export class QuillEditorComponent implements AfterViewInit {
-  // editTextMode = true;
-  // editImageMode = false;
-
+  @Output() editModeExited: EventEmitter<DeltaStatic> = new EventEmitter<DeltaStatic>();
   @ViewChild('toolbar') toolbar: ElementRef;
   @ViewChild('editor') editor: ElementRef;
   // @ViewChild('quillEditorContainerTempHolder') quillEditorContainerTempHolder: ElementRef;
@@ -19,7 +18,6 @@ export class QuillEditorComponent implements AfterViewInit {
   editables: any;
   editablesList: any;
   activeEditable: any;
-
   quill: Quill;
 
   constructor(private editablesService: EditablesDataService, private localStorageStateService: LocalStorageStateService) {
@@ -35,6 +33,16 @@ export class QuillEditorComponent implements AfterViewInit {
           },
           placeholder: 'Enter text...'
       });
+  }
+
+  // @HostListener('document:keydown.escape')
+  exitEditorMode() {
+    const delta: DeltaStatic = this.getQuillDelta();
+    this.editModeExited.emit(delta);
+  }
+
+  getQuillDelta(): DeltaStatic {
+    return this.quill.getContents();
   }
 
   // setEditableActive(editable: any, activate: boolean): void {
