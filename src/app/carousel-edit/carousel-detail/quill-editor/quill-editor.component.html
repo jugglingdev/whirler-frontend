@@ -1,1 +1,65 @@
-<div id="editor"></div>
+<!-- <div id="editor"></div> -->
+
+<!-- <div style="position: relative; height: 100vh; display: flex; flex-direction: column; overflow: hidden;">
+  A wrapper div for the toolbar
+  <div style="height: 60px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #ccc;">
+      Define what formats we want in the toolbar -->
+      <div id="toolbar" #toolbar>
+        <span class="ql-formats">
+          <select class="ql-font"></select>
+          <select class="ql-size"></select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-bold"></button>
+          <button class="ql-italic"></button>
+          <button class="ql-underline"></button>
+          <button class="ql-strike"></button>
+        </span>
+        <span class="ql-formats">
+          <select class="ql-color"></select>
+          <select class="ql-background"></select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-script" value="sub"></button>
+          <button class="ql-script" value="super"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-header" value="1"></button>
+          <button class="ql-header" value="2"></button>
+          <button class="ql-blockquote"></button>
+          <button class="ql-code-block"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-list" value="ordered"></button>
+          <button class="ql-list" value="bullet"></button>
+          <button class="ql-indent" value="-1"></button>
+          <button class="ql-indent" value="+1"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-direction" value="rtl"></button>
+          <select class="ql-align"></select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-link"></button>
+          <button class="ql-image"></button>
+          <button class="ql-video"></button>
+          <button class="ql-formula"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-clean"></button>
+        </span>
+      </div>
+  <!-- </div> -->
+
+  <div id="editor" #editor>
+    <!-- <div id="editor" class="editables-container" style="flex: 1 1 auto; display: flex;"> -->
+      <!-- <app-editable *ngFor="let editable of editablesList" [editable]="editable" [content]="editable.content"
+          (onChangeActive)="setEditableActive($event, true)" [isActive]="activeEditable === editable"></app-editable> -->
+  </div>
+
+  <!-- A temporary container for the quill editor element that will hold the element if no Editable is activated
+  <div style="position: fixed; left: 100vw; top: 0;" #quillEditorContainerTempHolder>
+      <div #quillEditorContainer
+          style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
+  </div> -->
+<!-- </div> -->

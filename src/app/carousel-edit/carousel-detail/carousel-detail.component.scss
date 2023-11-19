@@ -15,7 +15,9 @@
   app-quill-editor {
     width: 100%;
     margin: 0 auto;
+    position: relative;
     z-index: 1;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,10 +31,11 @@
 
     &::ng-deep .ql-container {
       width: 420px;
-      height: 420px;
+      height: 220px;
       max-height: 420px;
+      
       position: absolute;
-      top: 166px;
+      top: 120px;
       border: none;
       overflow: hidden;
 
@@ -99,7 +102,7 @@
       border: none;
       box-shadow: none;
       cursor: pointer;
-      
+
       transition: opacity .3s ease;
       opacity: .5;
 
@@ -115,5 +118,12 @@
     .button-next {
       right: 30px;
     }
+  }
+
+  app-slide {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 }

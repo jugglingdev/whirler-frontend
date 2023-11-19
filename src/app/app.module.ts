@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './shared/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuillEditorComponent } from './carousel-edit/carousel-detail/quill-editor/quill-editor.component';
+import { EditableComponent } from './carousel-edit/carousel-detail/quill-editor/editable/editable.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { QuillEditorComponent } from './carousel-edit/carousel-detail/quill-edit
     TemplateComponent,
     AuthComponent,
     QuillEditorComponent,
+    EditableComponent,
   ],
   imports: [
     BrowserModule,

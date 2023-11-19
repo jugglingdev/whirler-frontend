@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-detail',
@@ -7,22 +7,19 @@ import { Component } from '@angular/core';
 })
 export class CarouselDetailComponent {
   slideContent: string;
-  editTextMode = true;
-  editImageMode = true;
-
-  // textarea = document.querySelector('.ql-container');
-  // container = document.querySelector('.ql-editor');
-  // maxHeight = this.container.clientHeight;
+  editTextMode = false;
 
   constructor() {
-    this.slideContent = 'Initial slide content';
+    this.slideContent = '';
   }
 
-  // textarea.addEventListener('input', function () {
-  //   const scrollHeight = this.scrollHeight;
-  //   if (scrollHeight > this.maxHeight) {
-  //     this.value = this.value.substring(0, this.value.length - 1);
-  //   }
-  // });
+  onActivateEditor() {
+    this.editTextMode = true;
+  }
+
+  @HostListener('document:keydown.escape')
+  deactivateEditor() {
+    this.editTextMode = false;
+  }
 
 }

@@ -1,51 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Quill from 'quill';
+import { EditablesDataService } from './editable/editables.service';
+import { LocalStorageStateService } from './editable/local-storage-state.service';
 
 @Component({
   selector: 'app-quill-editor',
   templateUrl: './quill-editor.component.html',
   styleUrls: ['./quill-editor.component.scss']
 })
-export class QuillEditorComponent implements OnInit {
-  editTextMode = true;
-  editImageMode = false;
+export class QuillEditorComponent implements AfterViewInit {
+  // editTextMode = true;
+  // editImageMode = false;
+
+  @ViewChild('toolbar') toolbar: ElementRef;
+  @ViewChild('editor') editor: ElementRef;
+  // @ViewChild('quillEditorContainerTempHolder') quillEditorContainerTempHolder: ElementRef;
+
+  editables: any;
+  editablesList: any;
+  activeEditable: any;
+
   quill: Quill;
-  toolbarOptions = [];
 
-  ngOnInit(): void {
-
-    if (this.editTextMode) {
-      this.toolbarOptions = [
-        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-        [{ 'font': [] }],
-
-        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-        [{ 'align': [] }],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-
-        ['blockquote', 'code-block'],
-        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-
-        ['clean']                                         // remove formatting button
-      ];
-    }
-
-    if (this.editImageMode) {
-      this.toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-        ['blockquote', 'code-block'],
-      ]
-    }
-
-    this.quill = new Quill('#editor', {
-      modules: {
-        toolbar: this.toolbarOptions
-      },
-      theme: 'snow'
-    });
+  constructor(private editablesService: EditablesDataService, private localStorageStateService: LocalStorageStateService) {
+    this.editables = this.localStorageStateService.getState('quill-edit-multiple:editables', this.editablesService.getEditable('editable-1'));
+    this.editablesList = Object.values(this.editables);
   }
+
+  ngAfterViewInit(): void {
+      this.quill = new Quill(this.editor.nativeElement, {
+          theme: 'snow',
+          modules: {
+              toolbar: this.toolbar.nativeElement
+          },
+          placeholder: 'Enter text...'
+      });
+  }
+
+  // setEditableActive(editable: any, activate: boolean): void {
+  //     if (activate) {
+  //         const quill = this.quill;
+  //         const delta = quill.clipboard.convert(editable.content);
+  //         quill.setContents(delta, 'silent');
+  //         this.activeEditable = editable;
+  //         setTimeout(() => {
+  //             quill.setSelection({ index: 0, length: quill.getLength() - 1 }, 'api');
+  //         });
+  //     } else {
+  //         this.quillEditorContainerTempHolder.nativeElement.appendChild(this.quillEditorContainer.nativeElement);
+  //         this.activeEditable = undefined;
+  //     }
+  // }
 
 }
