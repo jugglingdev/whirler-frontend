@@ -35,7 +35,9 @@ export class CarouselDetailComponent {
   }
 
   convertDeltaToHtml(delta: DeltaStatic): string {
-    const converter = new QuillDeltaToHtmlConverter(delta.ops, {});
+    const converter = new QuillDeltaToHtmlConverter(delta.ops, {
+      inlineStyles: true,
+    });
     const htmlContent = converter.convert();
     return htmlContent;
   }

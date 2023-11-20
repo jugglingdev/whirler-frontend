@@ -1,6 +1,7 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { Slide } from './slide.model';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import * as DOMPurify from 'dompurify';
 
 @Component({
   selector: 'app-slide',
@@ -8,17 +9,22 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   styleUrls: ['./slide.component.scss'],
   encapsulation: ViewEncapsulation.Emulated,
 })
-export class SlideComponent {
+export class SlideComponent implements AfterViewInit {
   slide: Slide;
   @Input() slideContent: string;
 
-  constructor(private sanitizer: DomSanitizer) {
-    this.slide = new Slide('Slide Title', 'Slide Content', 'Slide Thumbnail')
+  constructor(private sanitizer: DomSanitizer, private el: ElementRef) {
+    this.slide = new Slide('Slide Title', 'Slide Content', 'Slide Thumbnail');
   }
 
-  getSafeHtml(): SafeHtml {
-    // Validate and sanitize user-generated content!!
-    return this.sanitizer.bypassSecurityTrustHtml(this.slideContent);
+  ngAfterViewInit(): void {
+    this.applyQuillStyles();
   }
 
+  private applyQuillStyles(): void {
+    const sanitizedContent = DOMPurify.sanitize(this.slideContent);
+    this.el.nativeElement.querySelector('.slide-content').innerHTML = sanitizedContent;
+    console.log(sanitizedContent);
+  }
 }
+
