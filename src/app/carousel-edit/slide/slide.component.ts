@@ -1,7 +1,10 @@
-import { Component, Input, ViewEncapsulation, OnInit, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Input, ViewEncapsulation, ElementRef, AfterViewInit } from '@angular/core';
 import { Slide } from './slide.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as DOMPurify from 'dompurify';
+import Delta from 'quill-delta';
+import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
+import { QuillEditorService } from '../carousel-detail/quill-editor/quill-editor.service';
 
 @Component({
   selector: 'app-slide',
@@ -13,7 +16,10 @@ export class SlideComponent implements AfterViewInit {
   slide: Slide;
   @Input() slideContent: string;
 
-  constructor(private sanitizer: DomSanitizer, private el: ElementRef) {
+  constructor(
+    private sanitizer: DomSanitizer,
+    private el: ElementRef,
+    private quillEditorService: QuillEditorService) {
     this.slide = new Slide('Slide Title', 'Slide Content', 'Slide Thumbnail');
   }
 
@@ -24,7 +30,9 @@ export class SlideComponent implements AfterViewInit {
   private applyQuillStyles(): void {
     const sanitizedContent = DOMPurify.sanitize(this.slideContent);
     this.el.nativeElement.querySelector('.slide-content').innerHTML = sanitizedContent;
-    console.log(sanitizedContent);
   }
+
+
+
 }
 
