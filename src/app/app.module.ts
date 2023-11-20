@@ -19,6 +19,7 @@ import { AuthComponent } from './shared/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuillEditorComponent } from './carousel-edit/carousel-detail/quill-editor/quill-editor.component';
 import { EditableComponent } from './carousel-edit/carousel-detail/quill-editor/editable/editable.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { EditableComponent } from './carousel-edit/carousel-detail/quill-editor/
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -51,7 +51,18 @@
       </div>
   <!-- </div> -->
 
-  <div id="editor" #editor>
+  <div id="editor" #editor draggable="true">
+    <!-- <div class="crop">
+      <div class="crop-line crop-top-line"></div>
+      <div class="crop-line crop-right-line"></div>
+      <div class="crop-line crop-bottom-line"></div>
+      <div class="crop-line crop-left-line"></div>
+
+      <div class="crop-corner crop-top-left-corner"></div>
+      <div class="crop-corner crop-top-right-corner"></div>
+      <div class="crop-corner crop-bottom-right-corner"></div>
+      <div class="crop-corner crop-bottom-left-corner"></div>
+    </div> -->
     <!-- <div id="editor" class="editables-container" style="flex: 1 1 auto; display: flex;"> -->
       <!-- <app-editable *ngFor="let editable of editablesList" [editable]="editable" [content]="editable.content"
           (onChangeActive)="setEditableActive($event, true)" [isActive]="activeEditable === editable"></app-editable> -->
