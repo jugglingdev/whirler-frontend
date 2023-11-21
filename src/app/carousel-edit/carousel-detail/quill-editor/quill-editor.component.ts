@@ -71,7 +71,9 @@ export class QuillEditorComponent implements AfterViewInit {
 
     console.log(
       'x: ' + (boundingClientRect.x - parentPosition.left),
-      'y: ' + (boundingClientRect.y - parentPosition.top)
+      'y: ' + (boundingClientRect.y - parentPosition.top),
+      'width: ' + element.offsetWidth,
+      'height: ' + element.offsetHeight,
     );
   }
 
