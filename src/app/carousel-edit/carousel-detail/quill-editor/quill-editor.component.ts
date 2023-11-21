@@ -3,8 +3,8 @@ import Quill from 'quill';
 import Delta from 'quill-delta';
 import { EditablesDataService } from './editable/editables.service';
 import { LocalStorageStateService } from './editable/local-storage-state.service';
-import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import { QuillEditorService } from './quill-editor.service';
+import { CdkDragEnd } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-quill-editor',
@@ -53,6 +53,37 @@ export class QuillEditorComponent implements AfterViewInit {
   exitEditorMode() {
     const delta: Delta = this.getQuillDelta();
     this.editModeExited.emit(delta);
+  }
+
+  // onDragEnded(event: CdkDragEnd) {
+  //   console.log(
+  //     'left: ', this.editor.nativeElement.offsetLeft,
+  //     'top: ', this.editor.nativeElement.offsetTop,
+  //     'width: ', this.editor.nativeElement.offsetWidth,
+  //     'height: ', this.editor.nativeElement.offsetHeight);
+  //   console.log(this.editor.nativeElement.getBoundingClientRect());
+  // }
+
+  onDragEnded(event: CdkDragEnd) {
+    let element = event.source.getRootElement();
+    let boundingClientRect = element.getBoundingClientRect();
+    let parentPosition = this.getPosition(element);
+
+    console.log(
+      'x: ' + (boundingClientRect.x - parentPosition.left),
+      'y: ' + (boundingClientRect.y - parentPosition.top)
+    );
+  }
+
+  getPosition(el: any) {
+    let x = 0;
+    let y = 0;
+    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+      x += el.offsetLeft - el.scrollLeft;
+      y += el.offsetTop - el.scrollTop;
+      el = el.offsetParent;
+    }
+    return { top: y, left: x };
   }
 
   getQuillDelta(): Delta {

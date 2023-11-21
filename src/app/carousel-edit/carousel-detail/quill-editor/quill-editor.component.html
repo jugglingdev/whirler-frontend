@@ -53,7 +53,7 @@
     </span>
   </div>
 
-  <div id="editor" #editor cdkDrag [cdkDragBoundary]="currentSlide">
+  <div id="editor" #editor cdkDrag [cdkDragBoundary]="currentSlide" (cdkDragEnded)="onDragEnded($event)">
     <!-- <div class="crop">
       <div class="crop-line crop-top-line"></div>
       <div class="crop-line crop-right-line"></div>
