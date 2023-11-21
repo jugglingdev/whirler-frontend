@@ -1,13 +1,12 @@
 <div class="carousel-detail">
 
-  <app-quill-editor *ngIf="editTextMode" (editModeExited)="updateSlideContent($event)"></app-quill-editor>
-
   <div class="slider">
     <div class="slide previous-slide">
       <h1>Slide 1</h1>
     </div>
 
-    <div class="slide current-slide" (dblclick)="onActivateEditor()">
+    <div class="slide current-slide" (dblclick)="onActivateEditor()" #currentSlide>
+      <app-quill-editor *ngIf="editTextMode" (editModeExited)="updateSlideContent($event)" [currentSlide]="currentSlide"></app-quill-editor>
       <app-slide *ngIf="!editTextMode" [slideContent]="slideContent"></app-slide>
     </div>
 

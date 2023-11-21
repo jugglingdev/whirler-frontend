@@ -3,7 +3,7 @@
 
 .carousel-detail {
 
-  margin: 0 auto;
+  margin: 200 auto;
   padding: 50px 30px;
   max-width: 900px;
 
@@ -27,15 +27,16 @@
       border-radius: 12px;
       background-color: #FFF;
       border: 1px solid $secondary-dark;
+
+      position: absolute;
+      top: -100px;
     }
 
     &::ng-deep .ql-container {
-      width: 420px;
-      height: 220px;
-      max-height: 420px;
+      width: 50%;
+      max-height: 100%;
 
-      position: absolute;
-      top: 120px;
+      position: relative;
       border: none;
       overflow: hidden;
 

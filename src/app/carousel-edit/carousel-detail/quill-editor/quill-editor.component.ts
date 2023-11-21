@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import Quill from 'quill';
-import DeltaStatic from 'quill-delta';
 import Delta from 'quill-delta';
 import { EditablesDataService } from './editable/editables.service';
 import { LocalStorageStateService } from './editable/local-storage-state.service';
@@ -16,6 +15,7 @@ export class QuillEditorComponent implements AfterViewInit {
   @Output() editModeExited: EventEmitter<Delta> = new EventEmitter<Delta>();
   @ViewChild('toolbar') toolbar: ElementRef;
   @ViewChild('editor') editor: ElementRef;
+  @Input('currentSlide') currentSlide: ElementRef;
   // @ViewChild('quillEditorContainerTempHolder') quillEditorContainerTempHolder: ElementRef;
 
   quill: Quill;
