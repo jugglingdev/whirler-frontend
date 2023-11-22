@@ -1,10 +1,10 @@
 @import 'variables';
 
 .whirler-button {
-  width: 5rem;
-  height: 2rem;
+  width: 6rem;
+  padding: 0.15rem 0;
 
-  font-weight: 400;
+  font-weight: 700;
   text-align: center;
   line-height: 2rem;
   text-decoration: none;
@@ -13,18 +13,15 @@
   color: $primary-light;
   background-color: $french-violet;
 
-  border: none;
+  border: 2px solid transparent;
   border-radius: 8px;
-  box-shadow: $box-shadow;
-  transition: all 250ms;
+  transition: all 200ms ease-in;
 
   &:hover {
-    box-shadow: $hover-box-shadow;
-  }
-
-  &:active {
-    box-shadow: $active-box-shadow;
-    transform: $active-transform;
+    color: $french-violet;
+    font-weight: 700;
+    background-color: $primary-light;
+    border: 2px solid $french-violet;
   }
 
   /* Dashboard Action Buttons */
@@ -32,15 +29,31 @@
   &.edit {
     color: $primary-dark;
     background-color: $aquamarine;
+
+    &:hover {
+      color: adjust-color($aquamarine, $lightness: -30%);
+      background-color: $primary-light;
+      border: 2px solid $aquamarine;
+    }
   }
 
   &.delete {
     color: $primary-dark;
     background-color: $french-rose;
+
+    &:hover {
+      background-color: $primary-light;
+      border: 2px solid $french-rose;
+    }
   }
 
   &.publish {
     color: $primary-dark;
     background-color: $jasmine;
+
+    &:hover {
+      background-color: $primary-light;
+      border: 2px solid $jasmine;
+    }
   }
 }
