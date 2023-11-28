@@ -46,8 +46,13 @@
       border: none;
       overflow: hidden;
 
-      cursor: move;
       resize: both;
+      cursor: move;
+
+        &:not(.edit-mode) {
+          resize: both;
+          cursor: move;
+        }
 
       &::ng-deep .ql-editor {
         max-width: 100%;

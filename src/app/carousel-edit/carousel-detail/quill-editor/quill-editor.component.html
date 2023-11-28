@@ -60,7 +60,7 @@
     </span> -->
   </div>
 
-  <div id="editor" #editor cdkDrag [cdkDragBoundary]="currentSlide" (cdkDragEnded)="onDragEnded($event)">
+  <div id="editor" #editor cdkDrag [cdkDragBoundary]="currentSlide" (cdkDragEnded)="onDragEnded($event)" (dblclick)="$event.stopImmediatePropagation()">
 
     <!-- <div id="editor" class="editables-container" style="flex: 1 1 auto; display: flex;"> -->
       <!-- <app-editable *ngFor="let editable of editablesList" [editable]="editable" [content]="editable.content"

@@ -3,7 +3,7 @@
   <div class="slider">
     <button class="button-previous"> < </button>
 
-    <div class="current-slide" (dblclick)="onActivateEditor()" #currentSlide>
+    <div class="current-slide" (dblclick)="onActivateEditor($event)" (click)="handleClick($event)" #currentSlide>
       <app-quill-editor *ngIf="editTextMode" (editModeExited)="updateSlideContent($event)" [currentSlide]="currentSlide"></app-quill-editor>
       <app-slide *ngIf="!editTextMode" [slideContent]="slideContent"></app-slide>
     </div>

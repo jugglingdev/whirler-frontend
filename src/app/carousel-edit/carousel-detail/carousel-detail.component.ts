@@ -17,8 +17,15 @@ export class CarouselDetailComponent {
 
   constructor(private quillEditorService: QuillEditorService) {}
 
-  onActivateEditor(): void {
+  onActivateEditor(event: Event): void {
+    event.stopPropagation();
     this.editTextMode = true;
+  }
+
+  handleClick(event: MouseEvent): void {
+    if (!this.editTextMode) {
+      
+    }
   }
 
   @HostListener('document:keydown.escape', ['$event'])
