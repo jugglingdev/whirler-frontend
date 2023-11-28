@@ -51,6 +51,13 @@
     <span class="ql-formats">
       <button class="ql-clean"></button>
     </span>
+    <!-- <span class="ql-formats">
+      <select class="box-align">
+        <option class="box-direction" value="rtl" selected (click)="onAlignBox('rtl')">RTL</option>
+        <option class="box-direction" value="center" (click)="onAlignBox('center')">CENTER</option>
+        <option class="box-direction" value="ltr" (click)="onAlignBox('ltr')">LTR</option>
+      </select>
+    </span> -->
   </div>
 
   <div id="editor" #editor cdkDrag [cdkDragBoundary]="currentSlide" (cdkDragEnded)="onDragEnded($event)">

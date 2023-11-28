@@ -48,6 +48,18 @@ export class QuillEditorComponent implements AfterViewInit {
     // this.quill.clipboard.dangerouslyPasteHTML(savedHtml);
   }
 
+  onAlignBox (value: string) {
+    if (value == 'ltr') {
+      this.editor.nativeElement.style.setProperty('align-self', 'flex-end');
+      this.editor.nativeElement.style.setProperty('direction', 'ltr');
+    } else if (value == 'center') {
+      this.editor.nativeElement.style.setProperty('align-self', 'center');
+      this.editor.nativeElement.style.setProperty('direction', 'rtl');
+    } else {
+      this.editor.nativeElement.style.setProperty('align-self', 'flex-start');
+      this.editor.nativeElement.style.setProperty('direction', 'rtl');
+    }
+  }
 
   // @HostListener('document:keydown.escape')
   exitEditorMode() {
