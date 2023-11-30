@@ -4,7 +4,7 @@ import Delta from 'quill-delta';
 import { EditablesDataService } from './editable/editables.service';
 import { LocalStorageStateService } from './editable/local-storage-state.service';
 import { QuillEditorService } from './quill-editor.service';
-import { CdkDragEnd } from '@angular/cdk/drag-drop';
+import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-quill-editor',
@@ -16,6 +16,8 @@ export class QuillEditorComponent implements AfterViewInit {
   @ViewChild('toolbar') toolbar: ElementRef;
   @ViewChild('editor') editor: ElementRef;
   @Input('currentSlide') currentSlide: ElementRef;
+  @Input('editContentMode') editContentMode: boolean;
+  @Input('dragAndDropMode') dragAndDropMode: boolean;
   // @ViewChild('quillEditorContainerTempHolder') quillEditorContainerTempHolder: ElementRef;
 
   quill: Quill;
@@ -33,11 +35,6 @@ export class QuillEditorComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initializeQuill();
-
-    const quillEditor = document.querySelector('.ql-editor');
-    quillEditor.addEventListener('click', function (event) {
-      event.stopPropagation();
-    });
   }
 
   initializeQuill(): void {
@@ -49,16 +46,11 @@ export class QuillEditorComponent implements AfterViewInit {
       placeholder: 'Enter text...'
     });
 
-
-
     // const savedHtml = '<p>This is my slide content</>';
     // this.quill.clipboard.dangerouslyPasteHTML(savedHtml);
   }
 
-  // onEditText(quillEditor, event) {
-  //   console.log(event);
-  //   quillEditor.nativeElement.event.stopPropogation();
-  // }
+
 
   // onAlignBox (value: string) {
   //   if (value == 'ltr') {

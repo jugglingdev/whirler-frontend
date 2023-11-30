@@ -1,13 +1,4 @@
-<!-- <div id="editor"></div> -->
-
-<!-- <div style="position: relative; height: 100vh; display: flex; flex-direction: column; overflow: hidden;">
-  A wrapper div for the toolbar
-  <div style="height: 60px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #ccc;">
-      Define what formats we want in the toolbar -->
-
-  <!-- </div> -->
-
-  <div id="toolbar" #toolbar>
+  <div #toolbar>
     <span class="ql-formats">
       <select class="ql-font"></select>
       <select class="ql-size"></select>
@@ -60,8 +51,12 @@
     </span> -->
   </div>
 
-  <div id="editor" #editor cdkDrag [cdkDragBoundary]="currentSlide" (cdkDragEnded)="onDragEnded($event)" (dblclick)="$event.stopImmediatePropagation()">
-
+  <div
+    #editor
+    cdkDrag
+    [cdkDragBoundary]="currentSlide"
+    [cdkDragDisabled]="editContentMode && !dragAndDropMode"
+    (cdkDragEnded)="onDragEnded($event)">
     <!-- <div id="editor" class="editables-container" style="flex: 1 1 auto; display: flex;"> -->
       <!-- <app-editable *ngFor="let editable of editablesList" [editable]="editable" [content]="editable.content"
           (onChangeActive)="setEditableActive($event, true)" [isActive]="activeEditable === editable"></app-editable> -->
@@ -71,4 +66,3 @@
       <div #quillEditorContainer
           style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
   </div> -->
-<!-- </div> -->

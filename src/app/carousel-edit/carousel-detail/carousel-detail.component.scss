@@ -47,11 +47,11 @@
       overflow: hidden;
 
       resize: both;
-      cursor: move;
+      cursor: text;
 
-        &:not(.edit-mode) {
-          resize: both;
+        &:is(.drag-and-drop-mode) {
           cursor: move;
+          resize: none;
         }
 
       &::ng-deep .ql-editor {
