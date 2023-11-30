@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Host, HostListener, Input, Output, ViewChild } from '@angular/core';
 import Quill from 'quill';
 import Delta from 'quill-delta';
 import { EditablesDataService } from './editable/editables.service';
@@ -50,6 +50,16 @@ export class QuillEditorComponent implements AfterViewInit {
     // this.quill.clipboard.dangerouslyPasteHTML(savedHtml);
   }
 
+  @HostListener('document:mousedown', ['$event'])
+  onGlobalClick(event: Event): void {
+    if (!this.editor.nativeElement.contains(event.target)) {
+      this.editContentMode = false;
+      this.dragAndDropMode = true;
+
+      const quillEditor = document.querySelector('.ql-container');
+      quillEditor.classList.add('.drag-and-drop-mode');
+    }
+  }
 
 
   // onAlignBox (value: string) {
