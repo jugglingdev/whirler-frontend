@@ -51,16 +51,18 @@
     </span> -->
   </div>
 
-  <div
-    #editor
-    cdkDrag
-    [cdkDragBoundary]="currentSlide"
-    [cdkDragDisabled]="editContentMode && !dragAndDropMode"
-    (cdkDragEnded)="onDragEnded($event)">
+<div #editorBorder class="editor-border"
+  cdkDrag
+  [cdkDragBoundary]="currentSlide"
+  [cdkDragDisabled]="mode != 'dragAndDrop'"
+  (cdkDragEnded)="onDragEnded($event)"
+  (mouseover)="onDragAndDropMode($event)">
+  <div #editor>
     <!-- <div id="editor" class="editables-container" style="flex: 1 1 auto; display: flex;"> -->
       <!-- <app-editable *ngFor="let editable of editablesList" [editable]="editable" [content]="editable.content"
           (onChangeActive)="setEditableActive($event, true)" [isActive]="activeEditable === editable"></app-editable> -->
   </div>
+</div>
   <!-- A temporary container for the quill editor element that will hold the element if no Editable is activated
   <div style="position: fixed; left: 100vw; top: 0;" #quillEditorContainerTempHolder>
       <div #quillEditorContainer

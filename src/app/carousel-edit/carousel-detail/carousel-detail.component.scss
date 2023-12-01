@@ -37,29 +37,19 @@
     }
 
     &::ng-deep .ql-container {
-      width: 50%;
-      height: fit-content;
-      max-width: 100%;
-      max-height: 100%;
+      width: 100%;
+      height: 100%;
 
       position: relative;
       border: none;
       overflow: hidden;
-
-      resize: both;
       cursor: text;
-
-        &:is(.drag-and-drop-mode) {
-          cursor: move;
-          resize: none;
-        }
 
       &::ng-deep .ql-editor {
         max-width: 100%;
         max-height: 100%;
-        overflow: hidden;
         padding: 0;
-        border: 1px solid grey;
+        overflow: hidden;
 
         &.ql-blank::before {
           position: absolute;

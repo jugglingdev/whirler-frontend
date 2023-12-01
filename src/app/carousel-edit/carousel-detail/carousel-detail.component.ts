@@ -12,34 +12,22 @@ import { QuillEditorService } from './quill-editor/quill-editor.service';
 })
 export class CarouselDetailComponent {
   @ViewChild(QuillEditorComponent) quillEditorComponent: QuillEditorComponent;
-  editContentMode = false;
-  dragAndDropMode = false;
+  mode: string = 'presentation';
   slideContent: string;
 
   constructor(private quillEditorService: QuillEditorService) {}
 
   onActivateEditor(): void {
-    const quillEditor = document.querySelector('.ql-container');
-
-    if (this.dragAndDropMode) {
-      quillEditor.classList.remove('.drag-and-drop-mode');
-    }
-
-    this.editContentMode = true;
-    this.dragAndDropMode = false;
+    this.mode = 'editContent';
   }
 
   @HostListener('document:keydown.escape', ['$event'])
   deactivateEditor(event: KeyboardEvent) {
-    if (this.editContentMode) {
+    if (this.mode !== 'presentation') {
       event.preventDefault();
       const delta: Delta = this.quillEditorComponent.getQuillDelta();
-      this.editContentMode = false;
-      this.dragAndDropMode = false;
+      this.mode = 'presentation';
       this.slideContent = this.quillEditorService.updateSlideContent(delta);
-
-      const quillEditor = document.querySelector('.ql-container');
-      quillEditor.classList.remove('.drag-and-drop-mode');
     }
   }
 

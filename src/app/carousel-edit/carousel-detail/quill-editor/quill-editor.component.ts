@@ -14,10 +14,10 @@ import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
 export class QuillEditorComponent implements AfterViewInit {
   @Output() editModeExited: EventEmitter<Delta> = new EventEmitter<Delta>();
   @ViewChild('toolbar') toolbar: ElementRef;
+  @ViewChild('editor-border') editorBorder: ElementRef;
   @ViewChild('editor') editor: ElementRef;
   @Input('currentSlide') currentSlide: ElementRef;
-  @Input('editContentMode') editContentMode: boolean;
-  @Input('dragAndDropMode') dragAndDropMode: boolean;
+  @Input('mode') mode: string;
   // @ViewChild('quillEditorContainerTempHolder') quillEditorContainerTempHolder: ElementRef;
 
   quill: Quill;
@@ -50,17 +50,24 @@ export class QuillEditorComponent implements AfterViewInit {
     // this.quill.clipboard.dangerouslyPasteHTML(savedHtml);
   }
 
-  @HostListener('document:mousedown', ['$event'])
-  onGlobalClick(event: Event): void {
-    if (!this.editor.nativeElement.contains(event.target)) {
-      this.editContentMode = false;
-      this.dragAndDropMode = true;
+  // @HostListener('document:mousedown', ['$event'])
+  // onGlobalClick(event: Event): void {
+  //   if (!this.editor.nativeElement.contains(event.target)) {
+  //     this.editContentMode = false;
+  //     this.dragAndDropMode = true;
 
-      const quillEditor = document.querySelector('.ql-container');
-      quillEditor.classList.add('.drag-and-drop-mode');
-    }
+  //     const quillEditor = document.querySelector('.ql-container');
+  //     quillEditor.classList.add('.drag-and-drop-mode');
+  //   }
+  // }
+
+  onDragAndDropMode(event: MouseEvent) {
+    const cursor = window.getComputedStyle(event.target as Element).cursor;
+    if (cursor == 'nwse-resize') return;
+    if (event.target !== event.currentTarget) return;
+    this.mode = 'dragAndDrop';
+    console.log("border-hover");
   }
-
 
   // onAlignBox (value: string) {
   //   if (value == 'ltr') {
@@ -92,6 +99,8 @@ export class QuillEditorComponent implements AfterViewInit {
       'width: ' + element.offsetWidth,
       'height: ' + element.offsetHeight,
     );
+
+    this.mode = 'editContent';
   }
 
   getPosition(el: any) {

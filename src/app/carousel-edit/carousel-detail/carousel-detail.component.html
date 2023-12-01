@@ -5,13 +5,12 @@
 
     <div class="current-slide" (dblclick)="onActivateEditor()" #currentSlide>
       <app-quill-editor
-        *ngIf="editContentMode"
+        *ngIf="mode == 'editContent'"
         (editModeExited)="updateSlideContent($event)"
         [currentSlide]="currentSlide"
-        [editContentMode]="editContentMode"
-        [dragAndDropMode]="dragAndDropMode">
+        [mode]="mode">
       </app-quill-editor>
-      <app-slide *ngIf="!editContentMode" [slideContent]="slideContent"></app-slide>
+      <app-slide *ngIf="mode == 'presentation'" [slideContent]="slideContent"></app-slide>
     </div>
 
     <button class="button-next"> > </button>
