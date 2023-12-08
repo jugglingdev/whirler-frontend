@@ -3,21 +3,20 @@ import Quill from 'quill';
 import Delta from 'quill-delta';
 import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 import { Subject } from "rxjs";
+import { QuillContent } from "./quill-content.model";
 
 @Injectable({providedIn: 'root'})
 export class QuillEditorService {
-  quillContentChanged = new Subject<Quill[]>();
+  quillContentChanged = new Subject<QuillContent[]>();
 
-  quill: Quill;
+  private quillContent: QuillContent[] = [];
 
-  private quillContent: Quill[] = [];
+  // getQuillContentDelta(): Delta {
+  //   // return this.quillContent.getContents();
+  // }
 
-  getQuillDelta(): Delta {
-    return this.quill.getContents();
-  }
-
-  setQuillDelta(delta: Delta): void {
-    this.quill.setContents(delta);
+  setQuillContentDelta(delta: Delta): void {
+    // this.quill.setContents(delta);
   }
 
   getQuillContent() {
@@ -29,6 +28,8 @@ export class QuillEditorService {
     return slideContent;
   }
 
+
+
   convertDeltaToHtml(delta: Delta): string {
     const htmlContent: string = new QuillDeltaToHtmlConverter(delta.ops, {
       inlineStyles: true,
@@ -36,9 +37,9 @@ export class QuillEditorService {
     return htmlContent;
   }
 
-  convertHtmlToDelta(html: string): Delta {
-    const delta = this.quill.clipboard.convert({ html });
-    return delta;
-  }
+  // convertHtmlToDelta(html: string): Delta {
+  //   // const delta = this.quill.clipboard.convert({ html });
+  //   // return delta;
+  // }
 
 }

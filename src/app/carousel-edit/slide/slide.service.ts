@@ -10,17 +10,17 @@ export class SlideService {
 
   constructor(private http: HttpClient) {}
 
-  getSlides(id: string): Observable<Slide[]> {
-    return this.http
-      .get<Slide[]>(
-        `${this.baseUrl}/${id}.json`
-      )
-  }
-
   getSlide(carouselId: string, slideId: string): Observable<Slide> {
     return this.http
       .get<Slide>(
         `${this.baseUrl}/${carouselId}/${slideId}.json`
+      )
+  }
+  
+  getAllSlides(id: string): Observable<Slide[]> {
+    return this.http
+      .get<Slide[]>(
+        `${this.baseUrl}/${id}.json`
       )
   }
 

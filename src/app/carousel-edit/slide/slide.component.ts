@@ -20,7 +20,7 @@ export class SlideComponent implements AfterViewInit {
     private sanitizer: DomSanitizer,
     private el: ElementRef,
     private quillEditorService: QuillEditorService) {
-    this.slide = new Slide('Slide Title', 'Slide Content', 'Slide Thumbnail');
+    // this.slide = new Slide('Slide Title', 'Slide Content', 'Slide Thumbnail');
   }
 
   ngAfterViewInit(): void {
