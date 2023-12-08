@@ -1,5 +1,16 @@
 <div class="container" *ngFor="let carousel of carousels; let i = index">
-  <app-carousel [carousel]="carousel"></app-carousel>
+  <div class="carousel-details">
+    <img
+      class="carousel-thumbnail"
+      [src]="carousel.thumbnail"
+      [alt]="carousel.title"
+      width="80px"
+      height="80px">
+    <div class="carousel-text">
+      <h3 class="title">{{ carousel.title }}</h3>
+      <p class="description">{{ carousel.description }}</p>
+    </div>
+  </div>
 
   <div class="buttons">
     <button class="edit whirler-button" routerLink="/edit">Edit</button>

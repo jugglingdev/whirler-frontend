@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CarouselCard } from './carousel-card/carousel-card.model';
 import { CarouselListService } from 'src/app/dashboard/carousel-list/carousel-list.service';
+import { Carousel } from 'src/app/shared/carousel.model';
 
 @Component({
   selector: 'app-carousel-list',
@@ -9,7 +9,7 @@ import { CarouselListService } from 'src/app/dashboard/carousel-list/carousel-li
 })
 export class CarouselListComponent implements OnInit {
 
-  carousels: CarouselCard[];
+  carousels: Carousel[];
 
   constructor (private carouselListService: CarouselListService) {}
 

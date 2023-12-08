@@ -19,6 +19,32 @@
     box-shadow: $hover-box-shadow;
   }
 
+  .carousel-details {
+    max-width: 80vw;
+    height: 85px;
+    margin-right: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    column-gap: 15px;
+    justify-items: start;
+    align-items: center;
+
+    .carousel-thumbnail {
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .carousel-text {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      overflow: hidden;
+    }
+  }
+
   .buttons {
     display: flex;
     flex-direction: row;
