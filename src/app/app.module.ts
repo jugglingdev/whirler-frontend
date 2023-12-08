@@ -13,12 +13,13 @@ import { SlideComponent } from './carousel-edit/slide/slide.component';
 import { CarouselDetailComponent } from './carousel-edit/carousel-detail/carousel-detail.component';
 import { CarouselThumbnailsComponent } from './carousel-edit/carousel-thumbnails/carousel-thumbnails.component';
 import { TemplateComponent } from './carousel-edit/slide/template/template.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './shared/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuillEditorComponent } from './carousel-edit/carousel-detail/quill-editor/quill-editor.component';
 import { EditableComponent } from './carousel-edit/carousel-detail/quill-editor/editable/editable.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CreateCarouselComponent } from './dashboard/create-carousel/create-carousel.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +37,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AuthComponent,
     QuillEditorComponent,
     EditableComponent,
+    CreateCarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     DragDropModule
   ],
