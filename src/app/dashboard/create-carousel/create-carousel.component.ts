@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarouselService } from 'src/app/shared/carousel.service';
@@ -11,7 +11,7 @@ import { Carousel } from 'src/app/shared/carousel.model';
 })
 export class CreateCarouselComponent implements OnInit {
   carouselForm: FormGroup;
-  @Input('showModal') showCreateCarouselModal: boolean;
+  @Output('closeModal') closeModal = new EventEmitter<void>();
 
   constructor(private carouselService: CarouselService) {}
 
@@ -26,21 +26,21 @@ export class CreateCarouselComponent implements OnInit {
 
   onEdit(carousel: Carousel) {
     this.carouselService.createCarousel(carousel);
-    this.closeModal();
+    this.onCloseModal();
   }
 
   onSave(carousel: Carousel) {
     this.carouselService.createCarousel(carousel);
-    this.closeModal();
+    this.onCloseModal();
   }
 
   onCancel() {
     this.carouselForm.reset();
-    this.closeModal();
+    this.onCloseModal();
   }
 
-  closeModal() {
-    this.showCreateCarouselModal = false;
+  onCloseModal() {
+    this.closeModal.emit();
   }
 
 }

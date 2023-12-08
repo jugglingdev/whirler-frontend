@@ -15,5 +15,5 @@
 
 <app-create-carousel
   *ngIf="showCreateCarouselModal"
-  [showCreateCarouselModal]="showModal">
+  (closeModal)="showCreateCarouselModal = false">
 </app-create-carousel>
