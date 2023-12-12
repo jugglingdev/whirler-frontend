@@ -33,7 +33,7 @@
     margin: 12px;
 
     .form-control {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -81,12 +81,13 @@
 
   img {
     width: clamp(300px, 50%, 500px);
-    margin: 12px 0;
+    margin-top: 12px;
   }
 
   .buttons-container {
-    margin: 24px auto;
+    margin: 36px auto 24px auto;
     max-width: 500px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
