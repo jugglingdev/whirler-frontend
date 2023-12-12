@@ -37,7 +37,7 @@
     }
   }
 
-  &.delete {
+  &.delete, &.cancel {
     color: $primary-dark;
     background-color: $french-rose;
 

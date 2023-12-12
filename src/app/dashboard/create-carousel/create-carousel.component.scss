@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -10,15 +12,46 @@
 
 .form-container {
   position: fixed;
-  top: 30vh;
+  top: 20vh;
   left: 20vw;
   width: 60vw;
   padding: 16px;
   z-index: 100;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
 
-.buttons-container {
-  text-align: right;
+
+  h2 {
+    margin: 12px;
+  }
+
+  form {
+    margin: 12px;
+
+    .form-control {
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      input {
+        outline-color: $french-violet;
+        padding: 4px;
+      }
+    }
+
+    .buttons-container {
+      margin: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .save {
+        line-height: 1.25;
+      }
+    }
+  }
+
+
+
 }
