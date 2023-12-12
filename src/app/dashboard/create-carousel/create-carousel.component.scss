@@ -12,9 +12,12 @@
 
 .form-container {
   position: fixed;
-  top: 20vh;
+  top: 10vh;
   left: 20vw;
   width: 60vw;
+  max-height: 80vh;
+  overflow-y: scroll;
+
   padding: 16px;
   z-index: 100;
   background: white;
