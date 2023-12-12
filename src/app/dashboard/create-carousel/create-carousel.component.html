@@ -1,4 +1,5 @@
 <div class="backdrop" (click)="onCancel()"></div>
+
 <div class="form-container">
   <h2>Create a New Carousel</h2>
   <form [formGroup]="carouselForm">
@@ -22,12 +23,17 @@
     </div>
     <div class="form-control">
       <label for="thumbnail">Thumbnail</label>
-      <input name="thumbnail" formControlName="thumbnail">
-    </div>
-    <div class="buttons-container">
-      <button class="edit whirler-button" (click)="onEdit()">Edit Now</button>
-      <button class="save whirler-button" (click)="onSave()">Save for Later</button>
-      <button class="cancel whirler-button" (click)="onCancel()">Cancel</button>
+      <input name="thumbnail" formControlName="thumbnail" (change)="onThumbnailChange($event)">
+      <img
+        *ngIf="carouselForm.get('thumbnail').value"
+        [src]="carouselForm.get('thumbnail').value"
+        [alt]="carouselForm.get('title').value">
     </div>
   </form>
+
+  <div class="buttons-container">
+    <button class="edit whirler-button" (click)="onEdit()">Edit Now</button>
+    <button class="save whirler-button" (click)="onSave()">Save for Later</button>
+    <button class="cancel whirler-button" (click)="onCancel()">Cancel</button>
+  </div>
 </div>

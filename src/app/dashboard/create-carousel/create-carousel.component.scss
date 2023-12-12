@@ -25,7 +25,8 @@
 
 
   h2 {
-    margin: 12px;
+    margin: 24px 12px;
+    text-align: center;
   }
 
   form {
@@ -47,9 +48,10 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
-      gap: 12px;
+      column-gap: 32px;
+      row-gap: 12px;
     }
 
     .add-tag, .remove-tag {
@@ -75,19 +77,23 @@
     .remove-tag {
       margin-left: 12px;
     }
-
-    .buttons-container {
-      margin: 24px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .save {
-        line-height: 1.25;
-      }
-    }
   }
 
+  img {
+    width: clamp(300px, 50%, 500px);
+    margin: 12px 0;
+  }
 
+  .buttons-container {
+    margin: 24px auto;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .save {
+      width: 9rem;
+    }
+  }
 
 }

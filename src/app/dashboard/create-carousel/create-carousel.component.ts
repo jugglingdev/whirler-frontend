@@ -38,6 +38,11 @@ export class CreateCarouselComponent implements OnInit {
     this.tags.removeAt(index);
   }
 
+  onThumbnailChange(event: any) {
+    const thumbnailUrl = event.target.value;
+    this.carouselForm.get('thumbnail').setValue(thumbnailUrl);
+  }
+
   onEdit() {
     this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
       this.onCloseModal();
