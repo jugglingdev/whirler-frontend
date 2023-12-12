@@ -5,14 +5,12 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { NgModule } from "@angular/core";
 import { AuthComponent } from "./shared/auth/auth.component";
 import { AuthGuard } from "./shared/auth/auth.guard";
-import { CreateCarouselComponent } from "./dashboard/create-carousel/create-carousel.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'edit', component: CarouselEditComponent, canActivate: [AuthGuard] },
-  { path: 'create', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/not-found' }
 ]

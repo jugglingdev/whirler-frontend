@@ -19,7 +19,7 @@ export class AppComponent implements OnDestroy {
     this.routerEventsSubscription = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      let blacklistedRoutes: string[] = ['/edit', '/create'];
+      let blacklistedRoutes: string[] = ['/edit'];
       this.hideHeaderAndFooter = !blacklistedRoutes.includes(event.url);
     });
   }
