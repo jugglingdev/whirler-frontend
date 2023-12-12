@@ -40,6 +40,39 @@
       }
     }
 
+    .tag-input-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .add-tag, .remove-tag {
+      width: 2.25rem;
+      border-radius: 50%;
+      padding: 0;
+
+      color: $secondary-dark;
+      background-color: $primary-light;
+      border: 1px solid $secondary-dark;
+
+      &:hover {
+        color: $primary-light;
+        background-color: $secondary-dark;
+        border: 1px solid $primary-light;
+      }
+    }
+
+    .add-tag {
+      margin: 6px 0;
+    }
+
+    .remove-tag {
+      margin-left: 12px;
+    }
+
     .buttons-container {
       margin: 24px 0;
       display: flex;

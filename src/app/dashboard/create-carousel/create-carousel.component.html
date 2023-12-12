@@ -1,7 +1,7 @@
 <div class="backdrop" (click)="onCancel()"></div>
 <div class="form-container">
   <h2>Create a New Carousel</h2>
-  <form [formGroup]="carouselForm" #f>
+  <form [formGroup]="carouselForm">
     <div class="form-control">
       <label for="title">Title</label>
       <input name="title" formControlName="title">
@@ -12,15 +12,21 @@
     </div>
     <div class="form-control">
       <label for="tags">Tags</label>
-      <input name="tags" formControlName="tags">
+      <div class="tag-input-container" formArrayName="tags">
+        <div class="tag-inputs" *ngFor="let tag of tags.controls; let i = index">
+          <input [formControl]="tag">
+          <button class="remove-tag whirler-button" type="button" (click)="removeTag(i)">X</button>
+        </div>
+      </div>
+      <button class="add-tag whirler-button" type="button" (click)="addTag()">+</button>
     </div>
     <div class="form-control">
       <label for="thumbnail">Thumbnail</label>
       <input name="thumbnail" formControlName="thumbnail">
     </div>
     <div class="buttons-container">
-      <button class="edit whirler-button" (click)="onEdit(f)" routerLink="/edit">Edit Now</button>
-      <button class="save whirler-button" (click)="onSave(f)">Save for Later</button>
+      <button class="edit whirler-button" (click)="onEdit()">Edit Now</button>
+      <button class="save whirler-button" (click)="onSave()">Save for Later</button>
       <button class="cancel whirler-button" (click)="onCancel()">Cancel</button>
     </div>
   </form>

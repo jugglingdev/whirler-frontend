@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarouselService } from 'src/app/shared/carousel.service';
 import { Carousel } from 'src/app/shared/carousel.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-carousel',
@@ -10,28 +11,44 @@ import { Carousel } from 'src/app/shared/carousel.model';
   styleUrl: './create-carousel.component.scss'
 })
 export class CreateCarouselComponent implements OnInit {
+
   carouselForm: FormGroup;
   @Output('closeModal') closeModal = new EventEmitter<void>();
 
-  constructor(private carouselService: CarouselService) {}
+  constructor(private carouselService: CarouselService, private router: Router) {}
 
   ngOnInit(): void {
       this.carouselForm = new FormGroup({
         title: new FormControl(null, Validators.required),
         description: new FormControl(null),
-        tags: new FormControl(null),
+        tags: new FormArray([]),
         thumbnail: new FormControl(null)
       });
   }
 
-  onEdit(carousel: Carousel) {
-    this.carouselService.createCarousel(carousel);
-    this.onCloseModal();
+  get tags() {
+    return this.carouselForm.get('tags') as FormArray;
   }
 
-  onSave(carousel: Carousel) {
-    this.carouselService.createCarousel(carousel);
-    this.onCloseModal();
+  addTag() {
+    this.tags.push(new FormControl(''));
+  }
+
+  removeTag(index: number) {
+    this.tags.removeAt(index);
+  }
+
+  onEdit() {
+    this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
+      this.onCloseModal();
+      this.router.navigate(['/edit']);
+    });
+  }
+
+  onSave() {
+    this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
+      this.onCloseModal();
+    });
   }
 
   onCancel() {
