@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CarouselListService } from 'src/app/dashboard/carousel-list/carousel-list.service';
 import { Carousel } from 'src/app/shared/carousel.model';
+import { CarouselService } from 'src/app/shared/carousel.service';
 
 @Component({
   selector: 'app-carousel-list',
@@ -11,14 +11,22 @@ export class CarouselListComponent implements OnInit {
 
   carousels: Carousel[];
 
-  constructor (private carouselListService: CarouselListService) {}
+  constructor (private carouselService: CarouselService) {}
 
   ngOnInit(): void {
-    this.carousels = this.carouselListService.getCarousels();
-    this.carouselListService.carouselsUpdated.subscribe((carousels) => this.carousels = carousels);
+    this.carouselService.getAllCarousels()
+      .subscribe((data) => {
+        if (data && typeof data === 'object') {
+          this.carousels = Object.values(data);
+        } else {
+          this.carousels = data;
+        }
+      });
   }
 
   removeCarousel(id: number) {
-    this.carouselListService.removeCarousel(id);
+    this.carouselService.deleteCarousel(id).subscribe(() => {
+
+    });
   }
 }
