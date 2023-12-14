@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarouselService } from 'src/app/shared/carousel.service';
 import { Carousel } from 'src/app/shared/carousel.model';
@@ -14,6 +13,7 @@ export class CreateCarouselComponent implements OnInit {
 
   carouselForm: FormGroup;
   @Output('closeModal') closeModal = new EventEmitter<void>();
+  @Output() carouselsUpdated = new EventEmitter<void>();
 
   constructor(private carouselService: CarouselService, private router: Router) {}
 
@@ -53,6 +53,7 @@ export class CreateCarouselComponent implements OnInit {
   onSave() {
     this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
       this.onCloseModal();
+      this.carouselsUpdated.emit();
     });
   }
 

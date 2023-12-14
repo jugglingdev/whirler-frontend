@@ -1,14 +1,19 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Carousel } from "./carousel.model";
-import { Observable } from "rxjs";
+import { Observable, tap } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class CarouselService {
+  emit() {
+    throw new Error('Method not implemented.');
+  }
 
   private carousel: Carousel;
   private carousels: Carousel[];
   private baseUrl = 'https://whirler-6dbae-default-rtdb.firebaseio.com/';
+
+  carouselsUpdated = new EventEmitter<Carousel[]>();
 
   // private carousels: Carousel[] = [
   //   new Carousel(
@@ -51,7 +56,14 @@ export class CarouselService {
     return this.http
       .post(
         `${this.baseUrl}/carousels.json`,
-        newCarousel);
+        newCarousel)
+      .pipe(
+        tap((responseData: { name: string }) => {
+          newCarousel.id = responseData.name;
+          this.carouselsUpdated.emit();
+          console.log(newCarousel.id);
+        })
+      );
   }
 
   updateCarousel(carouselId: string, updatedCarousel: Carousel): Observable<any> {
@@ -61,10 +73,13 @@ export class CarouselService {
         updatedCarousel);
   }
 
-  deleteCarousel(carouselId: number): Observable<any> {
+  deleteCarousel(carouselId: string): Observable<any> {
     return this.http
       .delete(
         `${this.baseUrl}/carousels/${carouselId}.json`
+      )
+      .pipe(
+        tap(() => this.carouselsUpdated.emit())
       );
   }
 

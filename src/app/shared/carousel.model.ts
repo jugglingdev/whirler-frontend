@@ -5,6 +5,7 @@ export class Carousel {
     public description: string,
     public tags: string[],
     public thumbnail: string,
+    public id?: string,
   ){};
 
 }

@@ -22,11 +22,24 @@ export class CarouselListComponent implements OnInit {
           this.carousels = data;
         }
       });
+
+    this.carouselService.carouselsUpdated.subscribe(() => {
+      this.refreshCarousels();
+    })
   }
 
-  removeCarousel(id: number) {
-    this.carouselService.deleteCarousel(id).subscribe(() => {
+  removeCarousel(id: string) {
+    this.carouselService.deleteCarousel(id).subscribe(() => {});
+  }
 
-    });
+  private refreshCarousels() {
+    this.carouselService.getAllCarousels()
+      .subscribe((data) => {
+        if (data && typeof data === 'object') {
+          this.carousels = Object.values(data);
+        } else {
+          this.carousels = data;
+        }
+      });
   }
 }
