@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarouselService } from 'src/app/shared/carousel.service';
-import { Carousel } from 'src/app/shared/carousel.model';
 import { Router } from '@angular/router';
 
 @Component({

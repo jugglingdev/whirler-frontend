@@ -9,8 +9,6 @@ export class CarouselService {
   //   throw new Error('Method not implemented.');
   // }
 
-  private carousel: Carousel;
-  private carousels: Carousel[];
   private baseUrl = 'https://whirler-6dbae-default-rtdb.firebaseio.com/';
 
   carouselsUpdated = new EventEmitter<Carousel[]>();
