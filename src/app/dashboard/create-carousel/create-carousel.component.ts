@@ -46,6 +46,7 @@ export class CreateCarouselComponent implements OnInit {
   onEdit() {
     this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
       this.onCloseModal();
+      this.carouselsUpdated.emit();
       this.router.navigate(['/edit']);
     });
   }

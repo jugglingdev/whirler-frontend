@@ -5,9 +5,9 @@ import { Observable, tap } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class CarouselService {
-  emit() {
-    throw new Error('Method not implemented.');
-  }
+  // emit() {
+  //   throw new Error('Method not implemented.');
+  // }
 
   private carousel: Carousel;
   private carousels: Carousel[];
@@ -60,8 +60,12 @@ export class CarouselService {
       .pipe(
         tap((responseData: { name: string }) => {
           newCarousel.id = responseData.name;
-          this.carouselsUpdated.emit();
-          console.log(newCarousel.id);
+          this.updateCarousel(newCarousel.id, newCarousel).subscribe(() => {
+            this.carouselsUpdated.emit();
+          });
+        },
+        (error) => {
+          console.error('Error creating console: ', error);
         })
       );
   }
@@ -79,7 +83,10 @@ export class CarouselService {
         `${this.baseUrl}/carousels/${carouselId}.json`
       )
       .pipe(
-        tap(() => this.carouselsUpdated.emit())
+        tap(() => this.carouselsUpdated.emit(),
+        (error) => {
+          console.error('Error deleting carousel: ', error);
+        })
       );
   }
 
