@@ -2,7 +2,7 @@
   <div class="carousel-details">
     <img
       class="carousel-thumbnail"
-      [src]="carousel.thumbnail"
+      [src]="carousel.thumbnail ? carousel.thumbnail : '../../../assets/logo.png'"
       [alt]="carousel.title"
       width="80px"
       height="80px">
