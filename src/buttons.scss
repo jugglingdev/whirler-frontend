@@ -9,19 +9,23 @@
   line-height: 2rem;
   text-decoration: none;
   cursor: pointer;
+  user-select: none;
 
   color: $primary-light;
   background-color: $french-violet;
 
-  border: 2px solid transparent;
+  border: none;
   border-radius: 8px;
-  transition: all 200ms ease-in;
+  box-shadow: $box-shadow;
+  transition: all 250ms ease;
 
   &:hover {
-    color: $french-violet;
-    font-weight: 700;
-    background-color: $primary-light;
-    border: 2px solid $french-violet;
+    box-shadow: $hover-box-shadow;
+  }
+
+  &:active {
+    box-shadow: $active-box-shadow;
+    transform: $active-transform;
   }
 
   /* Dashboard Action Buttons */
@@ -29,31 +33,15 @@
   &.edit {
     color: $primary-dark;
     background-color: $aquamarine;
-
-    &:hover {
-      color: adjust-color($aquamarine, $lightness: -30%);
-      background-color: $primary-light;
-      border: 2px solid $aquamarine;
-    }
   }
 
   &.delete, &.cancel {
     color: $primary-dark;
     background-color: $french-rose;
-
-    &:hover {
-      background-color: $primary-light;
-      border: 2px solid $french-rose;
-    }
   }
 
   &.publish {
     color: $primary-dark;
     background-color: $jasmine;
-
-    &:hover {
-      background-color: $primary-light;
-      border: 2px solid $jasmine;
-    }
   }
 }
