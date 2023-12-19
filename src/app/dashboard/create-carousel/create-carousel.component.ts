@@ -52,15 +52,19 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   onEdit() {
     if (this.carousel && this.carousel.id) {
       this.carouselService.updateCarousel(this.carousel.id, this.carouselForm.value).subscribe(() => {
-        this.onCloseModal();
-        this.carouselsUpdated.emit();
         this.router.navigate(['/edit', this.carousel.id]);
+        this.onCloseAndUpdate();
       });
     } else {
-      this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
-        this.onCloseModal();
-        this.carouselsUpdated.emit();
-        this.router.navigate(['/edit', this.carousel.id]);
+      this.carouselService.createCarousel(this.carouselForm.value).subscribe((newCarousel) => {
+        if (newCarousel && newCarousel.id) {
+          this.router.navigate(['/edit', newCarousel.id]);
+          this.onCloseAndUpdate();
+        } else {
+          console.error('Error: Carousel ID is undefined after creation.');
+        }
+      }, (error) => {
+        console.error('Error creating carousel: ', error);
       });
     }
   }
@@ -68,13 +72,11 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   onSave() {
     if (this.carousel && this.carousel.id) {
       this.carouselService.updateCarousel(this.carousel.id, this.carouselForm.value).subscribe(() => {
-        this.onCloseModal();
-        this.carouselsUpdated.emit();
+        this.onCloseAndUpdate();
       });
     } else {
       this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
-        this.onCloseModal();
-        this.carouselsUpdated.emit();
+        this.onCloseAndUpdate();
       });
     }
   }
@@ -84,8 +86,12 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
     this.onCloseModal();
   }
 
+  onCloseAndUpdate() {
+    this.carouselsUpdated.emit();
+    this.onCloseModal();
+  }
+
   onCloseModal() {
-    this.carousel = null;
     this.closeModal.emit();
   }
 
