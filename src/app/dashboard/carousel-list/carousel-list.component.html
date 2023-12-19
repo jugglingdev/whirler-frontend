@@ -1,4 +1,4 @@
-<div class="container" *ngFor="let carousel of carousels; let i = index">
+<div class="container" *ngFor="let carousel of carousels; let i = index" routerLink="/edit">
   <div class="carousel-details">
     <img
       class="carousel-thumbnail"
@@ -13,9 +13,9 @@
   </div>
 
   <div class="buttons">
-    <button class="edit whirler-button" routerLink="/edit">Edit</button>
+    <button class="edit whirler-button" (click)="onOpenModal($event, carousel)">Edit</button>
     <button class="publish whirler-button">Publish</button>
-    <button class="delete whirler-button" (click)="removeCarousel(carousel.id)">Delete</button>
+    <button class="delete whirler-button" (click)="removeCarousel($event, carousel.id)">Delete</button>
   </div>
 </div>
 

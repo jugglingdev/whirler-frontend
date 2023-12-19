@@ -1,7 +1,7 @@
 <div class="backdrop" (click)="onCancel()"></div>
 
 <div class="form-container">
-  <h2>Create a New Carousel</h2>
+  <h2 *ngIf="carousel == null">Create a New Carousel</h2>
   <form [formGroup]="carouselForm">
     <div class="form-control">
       <label for="title">Title</label>

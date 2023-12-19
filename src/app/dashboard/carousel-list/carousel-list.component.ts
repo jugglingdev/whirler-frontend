@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Carousel } from 'src/app/shared/carousel.model';
 import { CarouselService } from 'src/app/shared/carousel.service';
 
@@ -10,8 +11,9 @@ import { CarouselService } from 'src/app/shared/carousel.service';
 export class CarouselListComponent implements OnInit {
 
   carousels: Carousel[];
+  @Output('openModal') openModal = new EventEmitter<Carousel>();
 
-  constructor (private carouselService: CarouselService) {}
+  constructor (private carouselService: CarouselService, private route: Router) {}
 
   ngOnInit(): void {
     this.carouselService.getAllCarousels()
@@ -28,7 +30,14 @@ export class CarouselListComponent implements OnInit {
     })
   }
 
-  removeCarousel(id: string) {
+  onOpenModal(event, carousel: Carousel) {
+    event.stopPropagation();
+    this.openModal.emit(carousel);
+  }
+
+  removeCarousel(event, id: string) {
+    event.stopPropagation();
+    event.preventDefault();
     this.carouselService.deleteCarousel(id).subscribe(() => {});
   }
 

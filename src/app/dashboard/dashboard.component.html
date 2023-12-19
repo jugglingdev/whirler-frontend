@@ -4,15 +4,16 @@
     <a
       class="create whirler-button"
       role="button"
-      (click)="showCreateCarouselModal = true">
+      (click)="onCreateCarousel()">
       Create
     </a>
   </div>
   <hr>
-  <app-carousel-list></app-carousel-list>
+  <app-carousel-list (openModal)="onEditCarouselInfo($event)"></app-carousel-list>
 </div>
 
 <app-create-carousel
   *ngIf="showCreateCarouselModal"
+  [carousel]="selectedCarousel"
   (closeModal)="showCreateCarouselModal = false">
 </app-create-carousel>

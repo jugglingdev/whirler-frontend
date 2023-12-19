@@ -1,16 +1,17 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarouselService } from 'src/app/shared/carousel.service';
 import { Router } from '@angular/router';
+import { Carousel } from 'src/app/shared/carousel.model';
 
 @Component({
   selector: 'app-create-carousel',
   templateUrl: './create-carousel.component.html',
-  styleUrl: './create-carousel.component.scss'
+  styleUrls: ['./create-carousel.component.scss']
 })
 export class CreateCarouselComponent implements OnInit, OnDestroy {
-
   carouselForm: FormGroup;
+  @Input('carousel') carousel: Carousel;
   @Output('closeModal') closeModal = new EventEmitter<void>();
   @Output() carouselsUpdated = new EventEmitter<void>();
 
@@ -20,19 +21,23 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
     document.body.classList.add('no-scroll');
 
     this.carouselForm = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      description: new FormControl(null),
+      title: new FormControl(this.carousel ? this.carousel.title : null, Validators.required),
+      description: new FormControl(this.carousel ? this.carousel.description : null),
       tags: new FormArray([]),
-      thumbnail: new FormControl(null)
+      thumbnail: new FormControl(this.carousel ? this.carousel.thumbnail : null)
     });
+
+    if (this.carousel && this.carousel.tags) {
+      this.carousel.tags.forEach(tag => this.addTag(tag));
+    }
   }
 
   get tags() {
     return this.carouselForm.get('tags') as FormArray;
   }
 
-  addTag() {
-    this.tags.push(new FormControl(''));
+  addTag(initialValue: string = '') {
+    this.tags.push(new FormControl(initialValue));
   }
 
   removeTag(index: number) {
@@ -48,7 +53,7 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
     this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
       this.onCloseModal();
       this.carouselsUpdated.emit();
-      this.router.navigate(['/edit']);
+      this.router.navigate(['/edit', this.carousel.id]);
     });
   }
 
@@ -65,6 +70,7 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   }
 
   onCloseModal() {
+    this.carousel = null;
     this.closeModal.emit();
   }
 
