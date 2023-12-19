@@ -58,10 +58,17 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   }
 
   onSave() {
-    this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
-      this.onCloseModal();
-      this.carouselsUpdated.emit();
-    });
+    if (this.carousel && this.carousel.id) {
+      this.carouselService.updateCarousel(this.carousel.id, this.carouselForm.value).subscribe(() => {
+        this.onCloseModal();
+        this.carouselsUpdated.emit();
+      });
+    } else {
+      this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
+        this.onCloseModal();
+        this.carouselsUpdated.emit();
+      });
+    }
   }
 
   onCancel() {
