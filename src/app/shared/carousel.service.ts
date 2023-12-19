@@ -63,7 +63,7 @@ export class CarouselService {
           });
         },
         (error) => {
-          console.error('Error creating console: ', error);
+          console.error('Error creating carousel: ', error);
         })
       );
   }
