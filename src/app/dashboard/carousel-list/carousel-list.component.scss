@@ -6,6 +6,7 @@
   border-radius: 8px;
   box-shadow: $box-shadow;
   background-color: adjust-color($primary-light, $lightness: 10%);
+  cursor: pointer;
 
   display: flex;
   flex-direction: row;
