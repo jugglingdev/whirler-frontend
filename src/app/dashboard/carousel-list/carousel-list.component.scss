@@ -22,7 +22,6 @@
 
   .carousel-details {
     max-width: 80vw;
-    height: 85px;
     margin-right: 20px;
 
     display: grid;
@@ -43,6 +42,22 @@
       flex-direction: column;
       align-items: flex-start;
       overflow: hidden;
+
+      .tags-container {
+        padding-top: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.5em;
+
+        .tag {
+          padding: 0em .5em .1em .4em;
+          font-size: 14px;
+          color: $primary-light;
+          background-color: lighten($secondary-dark, 35%);
+          border-radius: 10px;
+        }
+      }
     }
   }
 
