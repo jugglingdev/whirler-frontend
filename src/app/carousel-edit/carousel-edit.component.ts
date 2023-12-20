@@ -7,12 +7,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./carousel-edit.component.scss']
 })
 export class CarouselEditComponent implements OnInit {
+  carouselId: string;
 
   constructor (private route: ActivatedRoute) {}
 
   ngOnInit(): void {
       this.route.params.subscribe(params => {
-        const carouselId = params['id'];
+        this.carouselId = params['id'];
       });
   }
 }

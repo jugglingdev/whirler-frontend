@@ -58,7 +58,7 @@ export class CarouselService {
       .pipe(
         tap((responseData: { name: string }) => {
           newCarousel.id = responseData.name;
-          this.updateCarousel(newCarousel.id, newCarousel).subscribe(() => {
+          this.updateCarousel(responseData.name, newCarousel).subscribe(() => {
             this.carouselsUpdated.emit();
           });
         },
@@ -72,7 +72,15 @@ export class CarouselService {
     return this.http
       .put(
         `${this.baseUrl}/carousels/${carouselId}.json`,
-        updatedCarousel);
+        updatedCarousel)
+      .pipe(
+        tap(() => {
+          this.carouselsUpdated.emit();
+        },
+        (error) => {
+          console.error('Error updating carousel: ', error);
+        })
+      );
   }
 
   deleteCarousel(carouselId: string): Observable<any> {

@@ -37,7 +37,6 @@ export class CarouselListComponent implements OnInit {
 
   removeCarousel(event, id: string) {
     event.stopPropagation();
-    event.preventDefault();
     this.carouselService.deleteCarousel(id).subscribe(() => {});
   }
 
