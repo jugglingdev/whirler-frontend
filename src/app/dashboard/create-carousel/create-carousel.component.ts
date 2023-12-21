@@ -50,8 +50,12 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   }
 
   onEdit() {
+    console.log('Edit Clicked.  Carousel ID: ', this.carousel.id);
+    console.log('Form Values: ', this.carouselForm.value);
+
     if (this.carousel && this.carousel.id) {
       this.carouselService.updateCarousel(this.carousel.id, this.carouselForm.value).subscribe(() => {
+        console.log('Update successful.');
         this.router.navigate(['/edit', this.carousel.id]);
         this.onCloseAndUpdate();
       });

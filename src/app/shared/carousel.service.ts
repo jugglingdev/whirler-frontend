@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { Carousel } from "./carousel.model";
-import { Observable, tap } from "rxjs";
+import { Observable, catchError, map, tap } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class CarouselService {
@@ -45,8 +45,21 @@ export class CarouselService {
 
   getAllCarousels(): Observable<Carousel[]> {
     return this.http
-      .get<Carousel[]>(
-        `${this.baseUrl}/carousels.json`
+      .get<{ [key: string]: Carousel }>(
+        `${this.baseUrl}/carousels.json`)
+      .pipe(
+        map(responseData => {
+          const carouselsArray: Carousel[] = Object.entries(responseData).map(([key, value]) => {
+            const carousel: Carousel = value;
+            carousel.id = key;
+            return carousel;
+          });
+          return carouselsArray;
+        }),
+        catchError((error) => {
+          console.error('Error getting carousels: ', error);
+          throw error;
+        })
       );
   }
 
@@ -69,16 +82,20 @@ export class CarouselService {
   }
 
   updateCarousel(carouselId: string, updatedCarousel: Carousel): Observable<any> {
+    console.log('Updating Carousel.  ID: ', carouselId);
+    console.log('Updated Carousel: ', updatedCarousel);
     return this.http
       .put(
         `${this.baseUrl}/carousels/${carouselId}.json`,
         updatedCarousel)
       .pipe(
         tap(() => {
+          console.log('Carousel updated successfully.');
           this.carouselsUpdated.emit();
-        },
-        (error) => {
+        }),
+        catchError((error) => {
           console.error('Error updating carousel: ', error);
+          throw error;
         })
       );
   }
