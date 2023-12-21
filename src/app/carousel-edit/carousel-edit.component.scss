@@ -1,18 +1,72 @@
 @import '../../variables.scss';
 
-.button-dashboard {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1;
+header {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  justify-content: center;
+  align-items: center;
 
-  display: flex;
-  gap: 10px;
+  .button-dashboard {
+    display: flex;
+    gap: 10px;
 
-  color: $primary-dark;
-  opacity: .5;
+    color: $primary-dark;
+    opacity: .5;
 
-  &:hover {
-    opacity: 1;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .buttons {
+    justify-self: end;
+
+    display: flex;
+    gap: 20px;
+
+    .add-slide {
+      width: 2.25rem;
+      border-radius: 50%;
+      padding: 0.15rem 0;
+
+      color: $secondary-dark;
+      background-color: $primary-light;
+      border: 1px solid $secondary-dark;
+
+      transition: all 0.3s ease;
+
+      &::after {
+        content: '';
+        color: transparent;
+      }
+
+      &:hover {
+        width: 8rem;
+        border-radius: 8px;
+
+        color: $primary-light;
+        background-color: $secondary-dark;
+        border: 1px solid $primary-light;
+        cursor: pointer;
+
+        transition: all 0.3s ease;
+      }
+
+      &:hover::after {
+        margin-left: 4px;
+        content: 'Add Slide';
+        white-space: nowrap;
+        color: $primary-light;
+      }
+    }
   }
 }
+
+
+
+

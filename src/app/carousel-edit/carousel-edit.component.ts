@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CarouselService } from '../shared/carousel.service';
+import { Carousel } from '../shared/carousel.model';
 
 @Component({
   selector: 'app-carousel-edit',
@@ -8,12 +10,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CarouselEditComponent implements OnInit {
   carouselId: string;
+  carousel: Carousel;
 
-  constructor (private route: ActivatedRoute) {}
+  constructor (private route: ActivatedRoute, private carouselService: CarouselService) {}
 
   ngOnInit(): void {
       this.route.params.subscribe(params => {
         this.carouselId = params['id'];
       });
+
+      this.carouselService.getCarousel(this.carouselId).subscribe((carousel) => {
+        this.carousel = carousel;
+      })
+  }
+
+  onSave() {
+    
   }
 }
