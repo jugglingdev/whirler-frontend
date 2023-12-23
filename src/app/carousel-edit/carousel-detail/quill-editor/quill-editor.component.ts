@@ -14,12 +14,14 @@ import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
   styleUrls: ['./quill-editor.component.scss']
 })
 export class QuillEditorComponent implements AfterViewInit {
+
   @ViewChild('toolbar') toolbar: ElementRef;
   @ViewChild('editor-border') editorBorder: ElementRef;
   @ViewChild('editor') editor: ElementRef;
+  // @ViewChild('quillEditorContainerTempHolder') quillEditorContainerTempHolder: ElementRef;
+
   @Input('currentSlide') currentSlide: ElementRef;
   @Input('mode') mode: string;
-  // @ViewChild('quillEditorContainerTempHolder') quillEditorContainerTempHolder: ElementRef;
 
   quill: Quill;
   editables: any;
@@ -72,8 +74,6 @@ export class QuillEditorComponent implements AfterViewInit {
     console.log("border-hover");
   }
 
-
-
   onDragEnded(event: CdkDragEnd) {
     let element = event.source.getRootElement();
     let boundingClientRect = element.getBoundingClientRect();
@@ -100,8 +100,6 @@ export class QuillEditorComponent implements AfterViewInit {
     return { top: y, left: x };
   }
 
-
-
   // setEditableActive(editable: any, activate: boolean): void {
   //     if (activate) {
   //         const quill = this.quill;
@@ -116,11 +114,5 @@ export class QuillEditorComponent implements AfterViewInit {
   //         this.activeEditable = undefined;
   //     }
   // }
-
-
-
-
-
-
 
 }
