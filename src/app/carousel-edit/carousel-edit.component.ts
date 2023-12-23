@@ -26,10 +26,14 @@ export class CarouselEditComponent implements OnInit {
   }
 
   onSave() {
-    
+    // update QuillContent and Slides array
+    // send updated Slides array to Firebase
+    // if in presentation mode, stay in presentation mode; if in editor mode, stay in editor mode
   }
 
   onAddSlide() {
-
+    // Add empty slide to Slides array
+    // Change Carousel Detail slide to new empty slide
+    // Open editor on new empty slide
   }
 }

@@ -1,12 +1,9 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Host, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import Quill from 'quill';
-import Delta from 'quill-delta';
 import { EditablesDataService } from './editable/editables.service';
 import { LocalStorageStateService } from './editable/local-storage-state.service';
 import { QuillEditorService } from './quill-editor.service';
-import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
-import { QuillContent } from './quill-content.model';
-import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
+import { CdkDragEnd } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-quill-editor',
