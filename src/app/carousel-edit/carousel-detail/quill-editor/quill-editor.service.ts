@@ -15,13 +15,13 @@ export class QuillEditorService {
     height: number,
     x: number,
     y: number
-  } = {
-    width: 0,
-    height: 0,
-    x: 0,
-    y: 0
-  }
-  
+    } = {
+      width: 0,
+      height: 0,
+      x: 0,
+      y: 0
+    }
+
   private quillContents: QuillContent[] = [];
 
   // Quill
@@ -36,9 +36,23 @@ export class QuillEditorService {
 
   // Quill Content
 
-  // getQuillContentDelta(): Delta {
-  //   // return this.quillContent.getContents();
-  // }
+  setCurrentQuillContentDimensions(width, height, x, y) {
+    this.quillDimensions.width = width,
+    this.quillDimensions.height = height,
+    this.quillDimensions.x = x,
+    this.quillDimensions.y = y
+  }
+
+  setCurrentQuillContent(delta: Delta): QuillContent {
+    return new QuillContent(
+      this.quillDimensions.width.toString(),
+      this.quillDimensions.height.toString(),
+      this.quillDimensions.x.toString(),
+      this.quillDimensions.y.toString(),
+      delta
+    );
+  }
+
 
   setQuillContentDelta(delta: Delta): void {
     // this.quill.setContents(delta);
