@@ -79,14 +79,13 @@ export class QuillEditorComponent implements AfterViewInit {
     let boundingClientRect = element.getBoundingClientRect();
     let parentPosition = this.getPosition(element);
 
-    console.log(
-      'x: ' + (boundingClientRect.x - parentPosition.left),
-      'y: ' + (boundingClientRect.y - parentPosition.top),
-      'width: ' + element.offsetWidth,
-      'height: ' + element.offsetHeight,
-    );
+    const width = element.offsetWidth;
+    const height = element.offsetHeight;
+    const x = boundingClientRect.x - parentPosition.left;
+    const y = boundingClientRect.y - parentPosition.top;
 
     this.mode = 'editContent';
+    this.quillEditorService.setCurrentQuillContentDimensions(width, height, x, y);
   }
 
   getPosition(el: any) {
