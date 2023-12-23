@@ -5,6 +5,8 @@ import { EditablesDataService } from './editable/editables.service';
 import { LocalStorageStateService } from './editable/local-storage-state.service';
 import { QuillEditorService } from './quill-editor.service';
 import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
+import { QuillContent } from './quill-content.model';
+import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 
 @Component({
   selector: 'app-quill-editor',
@@ -70,7 +72,7 @@ export class QuillEditorComponent implements AfterViewInit {
     console.log("border-hover");
   }
 
-  
+
 
   onDragEnded(event: CdkDragEnd) {
     let element = event.source.getRootElement();
@@ -98,18 +100,6 @@ export class QuillEditorComponent implements AfterViewInit {
     return { top: y, left: x };
   }
 
-  getQuillDelta(): Delta {
-    return this.quill.getContents();
-  }
-
-  setQuillDelta(delta: Delta): void {
-    this.quill.setContents(delta);
-  }
-
-  convertHtmlToDelta(html: string): Delta {
-    const delta = this.quill.clipboard.convert({ html });
-    return delta;
-  }
 
 
   // setEditableActive(editable: any, activate: boolean): void {
@@ -126,5 +116,11 @@ export class QuillEditorComponent implements AfterViewInit {
   //         this.activeEditable = undefined;
   //     }
   // }
+
+
+
+
+
+
 
 }

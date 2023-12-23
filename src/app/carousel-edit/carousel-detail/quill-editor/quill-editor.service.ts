@@ -34,13 +34,32 @@ export class QuillEditorService {
     return this.quill;
   }
 
-  // Quill Content
+  // Delta
 
-  setCurrentQuillContentDimensions(width, height, x, y) {
-    this.quillDimensions.width = width,
-    this.quillDimensions.height = height,
-    this.quillDimensions.x = x,
-    this.quillDimensions.y = y
+  getQuillDelta() {
+    const delta = this.quill.getContents();
+    return delta;
+  }
+
+  setQuillDelta(delta: Delta): void {
+    this.quill.setContents(delta);
+  }
+
+  convertHtmlToDelta(html: string): Delta {
+    const delta = this.quill.clipboard.convert({ html });
+    return delta;
+  }
+
+  // QuillContent
+
+  getCurrentQuillContent(): QuillContent {
+    return {
+      width: this.quillDimensions.width.toString(),
+      height: this.quillDimensions.height.toString(),
+      x: this.quillDimensions.x.toString(),
+      y: this.quillDimensions.y.toString(),
+      delta: this.getQuillDelta()
+    };
   }
 
   setCurrentQuillContent(delta: Delta): QuillContent {
@@ -53,21 +72,24 @@ export class QuillEditorService {
     );
   }
 
-
-  setQuillContentDelta(delta: Delta): void {
-    // this.quill.setContents(delta);
+  setCurrentQuillContentDimensions(width, height, x, y) {
+    this.quillDimensions.width = width,
+    this.quillDimensions.height = height,
+    this.quillDimensions.x = x,
+    this.quillDimensions.y = y
   }
 
-  getQuillContent() {
+  getAllQuillContent() {
     return this.quillContents.slice();
   }
 
-  updateSlideContent(delta: Delta) {
+  // Slides
+
+  updateSlideContent(quillContent: QuillContent) {
+    const delta = quillContent.delta;
     const slideContent: string = this.convertDeltaToHtml(delta);
-    return slideContent;
+    return { ...quillContent, html: slideContent };
   }
-
-
 
   convertDeltaToHtml(delta: Delta): string {
     const htmlContent: string = new QuillDeltaToHtmlConverter(delta.ops, {
@@ -75,10 +97,5 @@ export class QuillEditorService {
     }).convert();
     return htmlContent;
   }
-
-  // convertHtmlToDelta(html: string): Delta {
-  //   // const delta = this.quill.clipboard.convert({ html });
-  //   // return delta;
-  // }
 
 }

@@ -4,6 +4,7 @@ import Delta from 'quill-delta';
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import { QuillEditorComponent } from './quill-editor/quill-editor.component';
 import { QuillEditorService } from './quill-editor/quill-editor.service';
+import { QuillContent } from './quill-editor/quill-content.model';
 
 @Component({
   selector: 'app-carousel-detail',
@@ -25,9 +26,9 @@ export class CarouselDetailComponent {
   deactivateEditor(event: KeyboardEvent) {
     if (this.mode !== 'presentation') {
       event.preventDefault();
-      const delta: Delta = this.quillEditorComponent.getQuillDelta();
       this.mode = 'presentation';
-      this.slideContent = this.quillEditorService.updateSlideContent(delta);
+      const quillContent: QuillContent = this.quillEditorService.getCurrentQuillContent();
+      this.quillEditorService.updateSlideContent(quillContent);
     }
   }
 
