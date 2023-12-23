@@ -9,7 +9,20 @@ import { QuillContent } from "./quill-content.model";
 export class QuillEditorService {
   quillContentChanged = new Subject<QuillContent[]>();
 
+  private quill: Quill;
   private quillContent: QuillContent[] = [];
+
+  // Quill
+
+  setQuillInstance(quill: Quill): void {
+    this.quill = quill;
+  }
+
+  getQuillInstance(): Quill {
+    return this.quill;
+  }
+
+  // Quill Content
 
   // getQuillContentDelta(): Delta {
   //   // return this.quillContent.getContents();

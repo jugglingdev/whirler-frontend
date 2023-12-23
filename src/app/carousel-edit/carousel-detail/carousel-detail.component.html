@@ -6,7 +6,6 @@
     <div class="current-slide" (dblclick)="onActivateEditor()" #currentSlide>
       <app-quill-editor
         *ngIf="mode == 'editContent'"
-        (editModeExited)="updateSlideContent($event)"
         [currentSlide]="currentSlide"
         [mode]="mode">
       </app-quill-editor>

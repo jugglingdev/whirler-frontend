@@ -12,7 +12,6 @@ import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
   styleUrls: ['./quill-editor.component.scss']
 })
 export class QuillEditorComponent implements AfterViewInit {
-  @Output() editModeExited: EventEmitter<Delta> = new EventEmitter<Delta>();
   @ViewChild('toolbar') toolbar: ElementRef;
   @ViewChild('editor-border') editorBorder: ElementRef;
   @ViewChild('editor') editor: ElementRef;
@@ -45,6 +44,8 @@ export class QuillEditorComponent implements AfterViewInit {
       },
       placeholder: 'Enter text...'
     });
+
+    this.quillEditorService.setQuillInstance(this.quill);
 
     // const savedHtml = '<p>This is my slide content</>';
     // this.quill.clipboard.dangerouslyPasteHTML(savedHtml);
@@ -81,12 +82,6 @@ export class QuillEditorComponent implements AfterViewInit {
   //     this.editor.nativeElement.style.setProperty('direction', 'rtl');
   //   }
   // }
-
-  // @HostListener('document:keydown.escape')
-  exitEditorMode() {
-    const delta: Delta = this.getQuillDelta();
-    this.editModeExited.emit(delta);
-  }
 
   onDragEnded(event: CdkDragEnd) {
     let element = event.source.getRootElement();
