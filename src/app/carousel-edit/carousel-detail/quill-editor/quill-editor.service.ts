@@ -10,7 +10,19 @@ export class QuillEditorService {
   quillContentChanged = new Subject<QuillContent[]>();
 
   private quill: Quill;
-  private quillContent: QuillContent[] = [];
+  private quillDimensions: {
+    width: number,
+    height: number,
+    x: number,
+    y: number
+  } = {
+    width: 0,
+    height: 0,
+    x: 0,
+    y: 0
+  }
+  
+  private quillContents: QuillContent[] = [];
 
   // Quill
 
@@ -33,7 +45,7 @@ export class QuillEditorService {
   }
 
   getQuillContent() {
-    return this.quillContent.slice();
+    return this.quillContents.slice();
   }
 
   updateSlideContent(delta: Delta) {

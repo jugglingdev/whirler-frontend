@@ -70,18 +70,7 @@ export class QuillEditorComponent implements AfterViewInit {
     console.log("border-hover");
   }
 
-  // onAlignBox (value: string) {
-  //   if (value == 'ltr') {
-  //     this.editor.nativeElement.style.setProperty('align-self', 'flex-end');
-  //     this.editor.nativeElement.style.setProperty('direction', 'ltr');
-  //   } else if (value == 'center') {
-  //     this.editor.nativeElement.style.setProperty('align-self', 'center');
-  //     this.editor.nativeElement.style.setProperty('direction', 'rtl');
-  //   } else {
-  //     this.editor.nativeElement.style.setProperty('align-self', 'flex-start');
-  //     this.editor.nativeElement.style.setProperty('direction', 'rtl');
-  //   }
-  // }
+  
 
   onDragEnded(event: CdkDragEnd) {
     let element = event.source.getRootElement();
