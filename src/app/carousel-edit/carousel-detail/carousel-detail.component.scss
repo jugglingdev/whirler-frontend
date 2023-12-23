@@ -3,8 +3,8 @@
 
 .carousel-detail {
 
-  margin: 80px auto 0 auto;
-  padding: 50px 30px;
+  margin: 100px auto 0 auto;
+  padding: 0px 30px;
   max-width: 900px;
 
   display: flex;
@@ -26,13 +26,14 @@
 
     &::ng-deep .ql-toolbar {
       width: 80%;
+      max-width: 1020px;
       border-radius: 12px;
       background-color: #FFF;
       border: 1px solid $secondary-dark;
 
       position: fixed;
       margin: 0 auto;
-      top: 60px;
+      top: 100px;
       align-self: center;
     }
 
