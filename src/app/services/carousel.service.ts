@@ -12,7 +12,7 @@ export class CarouselService {
   constructor(private http: HttpClient) { }
 
   getCarousels(): Observable<Carousel[]> {
-    return this.http.get<Carousel[]>(`${environment.apiUrl}/dashboard`);
+    return this.http.get<Carousel[]>(`${environment.apiUrl}/carousels`);
   }
 
   getCarouselById(id: number): Observable<Carousel> {
@@ -28,6 +28,6 @@ export class CarouselService {
   }
 
   deleteCarousel(id: number): Observable<Carousel> {
-    return this.http.delete<Carousel>(`${environment.apiUrl}/carousel/${id}`);
+    return this.http.delete<Carousel>(`${environment.apiUrl}/carousels/${id}`);
   }
 }

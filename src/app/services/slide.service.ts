@@ -11,16 +11,16 @@ export class SlideService {
 
   constructor(private http: HttpClient) { }
 
-  getSlides(): Observable<Slide[]> {
-    return this.http.get<Slide[]>(`${environment.apiUrl}/slides`);
+  getSlides(carouselId: number): Observable<Slide[]> {
+    return this.http.get<Slide[]>(`${environment.apiUrl}/carousels/${carouselId}/slides`);
   }
 
   getSlideById(id: number): Observable<Slide> {
     return this.http.get<Slide>(`${environment.apiUrl}/slides/${id}`);
   }
 
-  createSlide(slide: Slide): Observable<Slide> {
-    return this.http.post<Slide>(`${environment.apiUrl}/slides`, slide);
+  createSlide(carouselId: number, slide: Slide): Observable<Slide> {
+    return this.http.post<Slide>(`${environment.apiUrl}/carousels/${carouselId}/slides`, slide);
   }
 
   updateSlide(slide: Slide): Observable<Slide> {

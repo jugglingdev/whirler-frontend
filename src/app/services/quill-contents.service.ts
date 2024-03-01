@@ -11,23 +11,23 @@ export class QuillContentsService {
 
   constructor(private http: HttpClient) { }
 
-  getQuillContents(): Observable<QuillContent[]> {
-    return this.http.get<QuillContent[]>(`${environment.apiUrl}/quill-contents`);
+  getSlideQuillContents(slideId: number): Observable<QuillContent[]> {
+    return this.http.get<QuillContent[]>(`${environment.apiUrl}/sildes/${slideId}/quill_contents`);
   }
 
   getQuillContentsById(id: number): Observable<QuillContent> {
-    return this.http.get<QuillContent>(`${environment.apiUrl}/quill-contents/${id}`);
+    return this.http.get<QuillContent>(`${environment.apiUrl}/quill_contents/${id}`);
   }
 
-  createQuillContent(quillContent: QuillContent): Observable<QuillContent> {
-    return this.http.post<QuillContent>(`${environment.apiUrl}/quill-contents`, quillContent);
+  createQuillContent(slideId: number, quillContent: QuillContent): Observable<QuillContent> {
+    return this.http.post<QuillContent>(`${environment.apiUrl}/slides/${slideId}/quill-contents`, quillContent);
   }
 
   updateQuillContent(quillContent: QuillContent): Observable<QuillContent> {
-    return this.http.put<QuillContent>(`${environment.apiUrl}/quill-contents/${quillContent.id}`, quillContent);
+    return this.http.put<QuillContent>(`${environment.apiUrl}/quill_contents/${quillContent.id}`, quillContent);
   }
 
   deleteQuillContent(id: number): Observable<QuillContent> {
-    return this.http.delete<QuillContent>(`${environment.apiUrl}/quill-contents/${id}`);
+    return this.http.delete<QuillContent>(`${environment.apiUrl}/quill_contents/${id}`);
   }
 }
