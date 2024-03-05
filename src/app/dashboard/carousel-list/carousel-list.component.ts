@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { Carousel } from 'src/app/shared/carousel.model';
-import { CarouselService } from 'src/app/shared/carousel.service';
+import { Carousel } from 'src/app/models/carousel';
+import { CarouselService } from 'src/app/services/carousel.service';
 
 @Component({
   selector: 'app-carousel-list',
@@ -13,17 +12,17 @@ export class CarouselListComponent implements OnInit {
   carousels: Carousel[];
   @Output('openModal') openModal = new EventEmitter<Carousel>();
 
-  constructor (private carouselService: CarouselService, private route: Router) {}
+  constructor (private carouselService: CarouselService) {}
 
   ngOnInit(): void {
-    this.carouselService.getAllCarousels()
-      .subscribe((data) => {
-        if (data && typeof data === 'object') {
-          this.carousels = Object.values(data);
-        } else {
-          this.carousels = data;
-        }
-      });
+    this.carouselService.getCarousels().subscribe({
+      next: (carousels) => {
+        this.carousels = carousels;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    })
 
     this.carouselService.carouselsUpdated.subscribe(() => {
       this.refreshCarousels();
@@ -35,19 +34,19 @@ export class CarouselListComponent implements OnInit {
     this.openModal.emit(carousel);
   }
 
-  removeCarousel(event, id: string) {
+  removeCarousel(event, id: number) {
     event.stopPropagation();
     this.carouselService.deleteCarousel(id).subscribe(() => {});
   }
 
   private refreshCarousels() {
-    this.carouselService.getAllCarousels()
-      .subscribe((data) => {
-        if (data && typeof data === 'object') {
-          this.carousels = Object.values(data);
-        } else {
-          this.carousels = data;
-        }
-      });
+    this.carouselService.getCarousels().subscribe({
+      next: (carousels) => {
+        this.carousels = carousels;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    })
   }
 }

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CarouselService } from 'src/app/shared/carousel.service';
+import { CarouselService } from 'src/app/services/carousel.service';
 import { Router } from '@angular/router';
-import { Carousel } from 'src/app/shared/carousel.model';
+import { Carousel } from 'src/app/models/carousel';
 
 @Component({
   selector: 'app-create-carousel',
@@ -28,7 +28,7 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
     });
 
     if (this.carousel && this.carousel.tags) {
-      this.carousel.tags.forEach(tag => this.addTag(tag));
+      this.carousel.tags.forEach(tag => this.addTag(tag.name));
     }
   }
 
@@ -50,13 +50,15 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   }
 
   onEdit() {
+    const carousel = new Carousel(this.carouselForm.value);
+
     if (this.carousel && this.carousel.id) {
-      this.carouselService.updateCarousel(this.carousel.id, this.carouselForm.value).subscribe(() => {
+      this.carouselService.updateCarousel(carousel).subscribe(() => {
         this.router.navigate(['/edit', this.carousel.id]);
         this.onCloseAndUpdate();
       });
     } else {
-      this.carouselService.createCarousel(this.carouselForm.value).subscribe((newCarousel) => {
+      this.carouselService.createCarousel(carousel).subscribe((newCarousel) => {
         if (newCarousel && newCarousel.id) {
           this.router.navigate(['/edit', newCarousel.id]);
           this.onCloseAndUpdate();
@@ -70,12 +72,14 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   }
 
   onSave() {
+    const carousel = new Carousel(this.carouselForm.value);
+
     if (this.carousel && this.carousel.id) {
-      this.carouselService.updateCarousel(this.carousel.id, this.carouselForm.value).subscribe(() => {
+      this.carouselService.updateCarousel(carousel).subscribe(() => {
         this.onCloseAndUpdate();
       });
     } else {
-      this.carouselService.createCarousel(this.carouselForm.value).subscribe(() => {
+      this.carouselService.createCarousel(carousel).subscribe(() => {
         this.onCloseAndUpdate();
       });
     }

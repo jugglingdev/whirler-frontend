@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Carousel } from '../models/carousel';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarouselService {
+  carouselsUpdated = new EventEmitter<Carousel[]>();
 
   constructor(private http: HttpClient) { }
 
@@ -20,14 +21,35 @@ export class CarouselService {
   }
 
   createCarousel(carousel: Carousel): Observable<Carousel> {
-    return this.http.post<Carousel>(`${environment.apiUrl}/carousels`, carousel);
+    return this.http
+      .post<Carousel>(`${environment.apiUrl}/carousels`, carousel)
+      .pipe(
+        tap(() => this.carouselsUpdated.emit(),
+        (error) => {
+          console.error('Error creating carousel: ', error);
+        })
+      );
   }
 
   updateCarousel(carousel: Carousel): Observable<Carousel> {
-    return this.http.put<Carousel>(`${environment.apiUrl}/carousels/${carousel.id}`, carousel);
+    return this.http
+      .put<Carousel>(`${environment.apiUrl}/carousels/${carousel.id}`, carousel)
+      .pipe(
+        tap(() => this.carouselsUpdated.emit(),
+        (error) => {
+          console.error('Error updating carousel: ', error);
+        })
+      );
   }
 
   deleteCarousel(id: number): Observable<Carousel> {
-    return this.http.delete<Carousel>(`${environment.apiUrl}/carousels/${id}`);
+    return this.http
+      .delete<Carousel>(`${environment.apiUrl}/carousels/${id}`)
+      .pipe(
+        tap(() => this.carouselsUpdated.emit(),
+        (error) => {
+          console.error('Error deleting carousel: ', error);
+        })
+      );
   }
 }

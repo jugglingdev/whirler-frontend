@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Carousel } from '../shared/carousel.model';
-import { CarouselService } from '../shared/carousel.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +9,6 @@ import { CarouselService } from '../shared/carousel.service';
 export class DashboardComponent {
   showCreateCarouselModal = false;
   selectedCarousel: Carousel = null;
-
-  constructor (private carouselService: CarouselService) {}
 
   onCreateCarousel() {
     this.showCreateCarouselModal = true;
