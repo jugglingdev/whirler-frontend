@@ -20,9 +20,9 @@ export class AuthComponent {
     const {email, password} = authForm.value;
 
     if (this.isLoginMode) {
-      this.authObs = this.authService.logIn(email, password);
+      this.authObs = this.authService.login(email, password);
     } else {
-      this.authObs = this.authService.signUp(email, password);
+      this.authObs = this.authService.signup(user);
     }
 
     this.authObs.subscribe(

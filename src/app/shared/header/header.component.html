@@ -4,8 +4,8 @@
     <a [routerLink]="isAuthenticated ? '/dashboard' : '/auth'"><h2 class="title">Whirler</h2></a>
   </div>
 
-  <div class="nav-right" *ngIf="isAuthenticated">
-    <p>Welcome!</p>
+  <div class="nav-right" *ngIf="isAuthenticated && currentUser">
+    <p>Welcome, {{ currentUser.username }}!</p>
     <img src="../../../assets/settings-light.png" alt="settings icon" width="20px" height="20px">
   </div>
 </nav>
