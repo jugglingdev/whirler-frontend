@@ -29,7 +29,7 @@ export class AuthService {
 	}
 
   signup(user: User) {
-    return this.http.post(`${environment.apiUrl}/users`, user);
+    return this.http.post<{ token: string }>(`${environment.apiUrl}/signup`, user);
   }
 
 	setToken(token: string) {
