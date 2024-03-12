@@ -1,0 +1,69 @@
+<div class="auth-container">
+  <div class="card-container">
+    <img class="logo" src="../../../assets/logo.png" alt="logo" width="52px" height="52px">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <div class="form-group">
+        <input
+          type="text"
+          name="firstName"
+          id="firstName"
+          placeholder="First name"
+          ngModel
+          required>
+        <input
+          type="text"
+          name="lastName"
+          id="lastName"
+          placeholder="Last name"
+          ngModel
+          required>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          ngModel
+          required>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          email
+          placeholder="Email"
+          ngModel
+          required>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          ngModel
+          required
+          minlength="12">
+        <input
+          type="password"
+          name="passwordConfirmation"
+          id="passwordConfirmation"
+          placeholder="Confirm password"
+          ngModel
+          required
+          minlength="6">
+      </div>
+
+      <button
+        class="whirler-button"
+        type="submit"
+        [disabled]="!authForm.valid">
+        Sign Up
+      </button>
+
+      <a
+        type="button"
+        routerLink="[/login]">
+        <p>Already have an account?  Log in</p>
+      </a>
+
+    </form>
+    <p *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+  </div>
