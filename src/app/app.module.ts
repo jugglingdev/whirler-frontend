@@ -21,6 +21,7 @@ import { CreateCarouselComponent } from './dashboard/create-carousel/create-caro
 import { authTokenInterceptor } from './shared/auth/auth-token.interceptor';
 import { LoginComponent } from './shared/auth/login/login.component';
 import { SignupComponent } from './shared/auth/signup/signup.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SignupComponent } from './shared/auth/signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    CommonModule
   ],
   providers: [provideHttpClient(withInterceptors([authTokenInterceptor]))],
   bootstrap: [AppComponent]

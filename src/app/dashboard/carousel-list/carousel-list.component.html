@@ -1,26 +1,31 @@
-<div class="container" *ngFor="let carousel of carousels; let i = index" [routerLink]="['/edit', carousel.id]">
-  <div class="carousel-details">
-    <img
-      class="carousel-thumbnail"
-      [src]="carousel.thumbnail ? carousel.thumbnail : '../../../assets/logo.png'"
-      [alt]="carousel.title"
-      width="120px"
-      height="120px">
-    <div class="carousel-text">
-      <h3 class="title">{{ carousel.title }}</h3>
-      <p class="description">{{ carousel.description }}</p>
-      <div class="tags-container">
-        <div class="tags" *ngFor="let tag of carousel.tags; let i = index">
-          <p class="tag"><em>{{ tag }}</em></p>
+@if (carousels) {
+  <div class="container" *ngFor="let carousel of carousels; let i = index" [routerLink]="['/edit', carousel.id]">
+    <div class="carousel-details">
+      <img
+        class="carousel-thumbnail"
+        [src]="carousel.thumbnail ? carousel.thumbnail : '../../../assets/logo.png'"
+        [alt]="carousel.title"
+        width="120px"
+        height="120px">
+      <div class="carousel-text">
+        <h3 class="title">{{ carousel.title }}</h3>
+        <p class="description">{{ carousel.description }}</p>
+        <div class="tags-container">
+          <div class="tags" *ngFor="let tag of carousel.tags; let i = index">
+            <p class="tag"><em>{{ tag }}</em></p>
+          </div>
         </div>
       </div>
     </div>
+    <div class="buttons">
+      <button class="edit whirler-button" (click)="onOpenModal($event, carousel)">Edit Info</button>
+      <button class="publish whirler-button">Publish</button>
+      <button class="delete whirler-button" (click)="removeCarousel($event, carousel.id)">Delete</button>
+    </div>
   </div>
+}
+@else {
+  <p class="create-carousel-CTA">It's time to create a carousel!</p>
+}
 
-  <div class="buttons">
-    <button class="edit whirler-button" (click)="onOpenModal($event, carousel)">Edit Info</button>
-    <button class="publish whirler-button">Publish</button>
-    <button class="delete whirler-button" (click)="removeCarousel($event, carousel.id)">Delete</button>
-  </div>
-</div>
 
