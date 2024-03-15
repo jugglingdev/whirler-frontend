@@ -13,9 +13,9 @@ export class NoAuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | UrlTree {
     if (this.authService.isLoggedIn()) {
-      return this.router.createUrlTree(['/dashboard']);
-    } else {
       return true;
+    } else {
+      return this.router.createUrlTree(['/dashboard']);
     }
   }
 }
