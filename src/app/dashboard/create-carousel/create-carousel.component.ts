@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarouselService } from 'src/app/services/carousel.service';
 import { Router } from '@angular/router';
 import { Carousel } from 'src/app/models/carousel';
+import { Tag } from 'src/app/models/tag';
 
 @Component({
   selector: 'app-create-carousel',
@@ -11,6 +12,13 @@ import { Carousel } from 'src/app/models/carousel';
 })
 export class CreateCarouselComponent implements OnInit, OnDestroy {
   carouselForm: FormGroup;
+  carouselTags: Tag[] = [];
+  options: Tag[] = [
+    { name: 'One', id: 0 },
+    { name: 'Two', id: 0 },
+    { name: 'Three', id: 0 }
+  ];
+
   @Input('carousel') carousel: Carousel;
   @Output('closeModal') closeModal = new EventEmitter<void>();
   @Output() carouselsUpdated = new EventEmitter<void>();
@@ -28,7 +36,8 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
     });
 
     if (this.carousel && this.carousel.tags) {
-      this.carousel.tags.forEach(tag => this.addTag(tag.name));
+      this.carouselTags = this.carousel.tags;
+      this.carouselTags.forEach(tag => this.addTag(tag.name));
     }
   }
 
@@ -42,6 +51,10 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
 
   removeTag(index: number) {
     this.tags.removeAt(index);
+  }
+
+  onOptionSelected(event: any) {
+    console.log(event);
   }
 
   onThumbnailChange(event: any) {
@@ -72,7 +85,7 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   }
 
   onSave() {
-    const carousel = new Carousel(this.carouselForm.value);
+    const carousel = new Carousel(this.carouselForm.value, this.carousel?.id);
 
     if (this.carousel && this.carousel.id) {
       this.carouselService.updateCarousel(carousel).subscribe(() => {
