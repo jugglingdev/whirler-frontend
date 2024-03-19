@@ -13,7 +13,7 @@ import { CarouselDetailComponent } from './carousel-edit/carousel-detail/carouse
 import { CarouselThumbnailsComponent } from './carousel-edit/carousel-thumbnails/carousel-thumbnails.component';
 import { TemplateComponent } from './carousel-edit/slide/template/template.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { QuillEditorComponent } from './carousel-edit/carousel-detail/quill-editor/quill-editor.component';
 import { EditableComponent } from './carousel-edit/carousel-detail/quill-editor/editable/editable.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -22,6 +22,8 @@ import { authTokenInterceptor } from './shared/auth/auth-token.interceptor';
 import { LoginComponent } from './shared/auth/login/login.component';
 import { SignupComponent } from './shared/auth/signup/signup.component';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     DragDropModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule
   ],
   providers: [provideHttpClient(withInterceptors([authTokenInterceptor]))],
   bootstrap: [AppComponent]
