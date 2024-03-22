@@ -4,6 +4,7 @@ import { CarouselService } from 'src/app/services/carousel.service';
 import { Router } from '@angular/router';
 import { Carousel } from 'src/app/models/carousel';
 import { Tag } from 'src/app/models/tag';
+import { TagService } from 'src/app/services/tag.service';
 
 @Component({
   selector: 'app-create-carousel',
@@ -23,7 +24,7 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   @Output('closeModal') closeModal = new EventEmitter<void>();
   @Output() carouselsUpdated = new EventEmitter<void>();
 
-  constructor(private carouselService: CarouselService, private router: Router) {}
+  constructor(private carouselService: CarouselService, private router: Router, private tagService: TagService) {}
 
   ngOnInit(): void {
     document.body.classList.add('no-scroll');
@@ -39,6 +40,15 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
       this.carouselTags = this.carousel.tags;
       this.carouselTags.forEach(tag => this.addTag(tag.name));
     }
+
+    this.tagService.getTags().subscribe({
+      next: (tags) => {
+        this.options = tags;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    })
   }
 
   get tags() {
@@ -54,7 +64,17 @@ export class CreateCarouselComponent implements OnInit, OnDestroy {
   }
 
   onOptionSelected(event: any) {
-    console.log(event);
+    if (!this.options.find((option) => option.name == event.option.value)) {
+      const newTag = new Tag({ id: 0, name: event.option.value });
+      this.tagService.createTag(newTag).subscribe({
+        next: (tag) => {
+          this.options.push(tag);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      })
+    }
   }
 
   onThumbnailChange(event: any) {

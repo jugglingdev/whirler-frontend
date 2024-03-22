@@ -1,4 +1,4 @@
-@if (carousels) {
+@if (carousels.length) {
   <div class="container" *ngFor="let carousel of carousels; let i = index" [routerLink]="['/edit', carousel.id]">
     <div class="carousel-details">
       <img
