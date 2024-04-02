@@ -1,12 +1,21 @@
 <nav>
   <div class="nav-left">
-    <img class="logo" src="../../../assets/logo.png" alt="logo" width="32px" height="32px">
-    <a [routerLink]="isAuthenticated ? '/dashboard' : '/auth'"><h2 class="title">Whirler</h2></a>
+    <img class="logo" src="../../../assets/logo.png" alt="Whirler logo" width="32px" height="32px">
+    <a [routerLink]="isAuthenticated ? '/dashboard' : '/auth'">
+      <h2 class="title">Whirler</h2>
+    </a>
   </div>
 
   <div class="nav-right" *ngIf="isAuthenticated && currentUser">
-    <p>Welcome, {{ currentUser.username }}!</p>
-    <img src="../../../assets/settings-light.png" alt="settings icon" width="20px" height="20px">
+    <p class="welcome">Welcome, {{ currentUser.username }}!</p>
+    <a role="button" (click)="onToggleSettings()">
+      <img src="../../../assets/settings-light.png" alt="settings icon" width="20px" height="20px">
+    </a>
+
+    <app-settings
+      *ngIf="showSettings"
+      (closeModal)="showSettings = false">
+    </app-settings>
   </div>
 </nav>
 

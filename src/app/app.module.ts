@@ -24,6 +24,7 @@ import { SignupComponent } from './shared/auth/signup/signup.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SettingsComponent } from './shared/header/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     EditableComponent,
     CreateCarouselComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

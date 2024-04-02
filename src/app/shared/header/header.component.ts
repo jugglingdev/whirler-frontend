@@ -10,6 +10,8 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+
+  showSettings = false;
   isAuthenticated = false;
   currentUser: User;
   private tokenSubscription: Subscription;
@@ -21,6 +23,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.isAuthenticated = !!token;
       this.fetchUser();
     });
+  }
+
+  onToggleSettings() {
+    this.showSettings = !this.showSettings;
   }
 
   fetchUser() {

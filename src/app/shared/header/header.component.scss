@@ -40,11 +40,16 @@
     }
 
     .nav-right {
+      position: relative;
+
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
-      gap: 12px;
+
+      .welcome {
+        margin-right: 8px;
+      }
     }
   }
 

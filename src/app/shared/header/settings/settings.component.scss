@@ -1,0 +1,19 @@
+@import '../../../../variables.scss';
+
+.settings-container {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  z-index: 1;
+
+  padding: 0.15rem 0.5rem;
+  width: 200px;
+
+  background-color: $primary-light;
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
