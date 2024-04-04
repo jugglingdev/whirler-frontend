@@ -35,9 +35,13 @@ export class SignupComponent {
           this.router.navigate(['dashboard']);
         },
         error: (error) => {
-          this.errorMessage = error.message;
+          this.parseErrorMessage(error);
         }
       }
     );
+  }
+
+  private parseErrorMessage(error) {
+    this.errorMessage = JSON.stringify(error.error);
   }
 }
