@@ -32,6 +32,10 @@ export class AuthService {
     return this.http.post<{ token: string }>(`${environment.apiUrl}/signup`, user);
   }
 
+  parseErrorMessage(error) {
+    return JSON.stringify(error.error);
+  }
+
 	setToken(token: string) {
 		localStorage.setItem('token', token);
 		this.tokenSubject.next(token);
