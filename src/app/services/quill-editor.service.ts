@@ -4,6 +4,7 @@ import Delta from 'quill-delta';
 import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 import { Subject } from "rxjs";
 import { QuillContent } from "../models/quill-content";
+import { Slide } from "../models/slide";
 
 @Injectable({providedIn: 'root'})
 export class QuillEditorService {
@@ -52,25 +53,25 @@ export class QuillEditorService {
 
   // QuillContent
 
-  getCurrentQuillContent(): QuillContent {
+  getCurrentQuillContent(slide: Slide): QuillContent {
     return {
       width: this.quillDimensions.width,
       height: this.quillDimensions.height,
       x: this.quillDimensions.x,
       y: this.quillDimensions.y,
-      delta: this.getQuillDelta()
+      delta: JSON.stringify(this.getQuillDelta()),
+      slide: slide
     };
   }
 
   setCurrentQuillContent(delta: Delta): QuillContent {
-    return new QuillContent(
-      this.quillDimensions.width,
-      this.quillDimensions.height,
-      this.quillDimensions.x,
-      this.quillDimensions.y,
-      delta,
-
-    );
+    return new QuillContent({
+      width: this.quillDimensions.width,
+      height: this.quillDimensions.height,
+      x: this.quillDimensions.x,
+      y: this.quillDimensions.y,
+      delta: delta
+    });
   }
 
   setCurrentQuillContentDimensions(width, height, x, y) {
@@ -87,7 +88,7 @@ export class QuillEditorService {
   // Slides
 
   updateSlideContent(quillContent: QuillContent) {
-    const delta = quillContent.delta;
+    const delta = JSON.parse(quillContent.delta);
     const slideContent: string = this.convertDeltaToHtml(delta);
     return { ...quillContent, html: slideContent };
   }

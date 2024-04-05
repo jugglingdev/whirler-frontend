@@ -1,10 +1,8 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
-import DeltaStatic from 'quill-delta';
-import Delta from 'quill-delta';
-import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import { QuillEditorComponent } from './quill-editor/quill-editor.component';
-import { QuillEditorService } from '../../../services/quill-editor.service';
-import { QuillContent } from './quill-editor/quill-content.model';
+import { QuillEditorService } from 'src/app/services/quill-editor.service';
+import { QuillContent } from 'src/app/models/quill-content';
+import { CarouselService } from 'src/app/services/carousel.service';
 
 @Component({
   selector: 'app-carousel-detail',
@@ -16,7 +14,7 @@ export class CarouselDetailComponent {
   mode: string = 'presentation';
   slideContent: string;
 
-  constructor(private quillEditorService: QuillEditorService) {}
+  constructor(private carouselService: CarouselService, private quillEditorService: QuillEditorService) {}
 
   onActivateEditor(): void {
     this.mode = 'editContent';
@@ -27,7 +25,7 @@ export class CarouselDetailComponent {
     if (this.mode !== 'presentation') {
       event.preventDefault();
       this.mode = 'presentation';
-      const quillContent: QuillContent = this.quillEditorService.getCurrentQuillContent();
+      const quillContent: QuillContent = this.quillEditorService.getCurrentQuillContent(slide);
       this.quillEditorService.updateSlideContent(quillContent);
     }
   }

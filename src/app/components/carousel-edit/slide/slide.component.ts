@@ -11,6 +11,7 @@ import { Slide } from 'src/app/models/slide';
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class SlideComponent implements AfterViewInit {
+  slideId: number;
   slide: Slide;
   @Input() slideContent: string;
 
