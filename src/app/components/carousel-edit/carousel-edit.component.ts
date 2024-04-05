@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CarouselService } from '../shared/carousel.service';
-import { Carousel } from '../shared/carousel.model';
-import { SlideService } from './slide/slide.service';
+import { SlideService } from '../../services/slide.service';
+import { Carousel } from '../../models/carousel';
+import { CarouselService } from '../../services/carousel.service';
 
 @Component({
   selector: 'app-carousel-edit',
@@ -10,7 +10,7 @@ import { SlideService } from './slide/slide.service';
   styleUrls: ['./carousel-edit.component.scss']
 })
 export class CarouselEditComponent implements OnInit {
-  carouselId: string;
+  carouselId: number;
   carousel: Carousel;
 
   constructor (private route: ActivatedRoute, private carouselService: CarouselService, private slideService: SlideService) {}
@@ -20,7 +20,7 @@ export class CarouselEditComponent implements OnInit {
         this.carouselId = params['id'];
       });
 
-      this.carouselService.getCarousel(this.carouselId).subscribe((carousel) => {
+      this.carouselService.getCarouselById(this.carouselId).subscribe((carousel) => {
         this.carousel = carousel;
       })
   }

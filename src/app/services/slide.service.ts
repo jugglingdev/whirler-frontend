@@ -15,8 +15,8 @@ export class SlideService {
     return this.http.get<Slide[]>(`${environment.apiUrl}/carousels/${carouselId}/slides`);
   }
 
-  getSlideById(id: number): Observable<Slide> {
-    return this.http.get<Slide>(`${environment.apiUrl}/slides/${id}`);
+  getSlideById(slideId: number): Observable<Slide> {
+    return this.http.get<Slide>(`${environment.apiUrl}/slides/${slideId}`);
   }
 
   createSlide(carouselId: number, slide: Slide): Observable<Slide> {
@@ -27,7 +27,7 @@ export class SlideService {
     return this.http.put<Slide>(`${environment.apiUrl}/slides/${slide.id}`, slide);
   }
 
-  deleteSlide(id: number): Observable<Slide> {
-    return this.http.delete<Slide>(`${environment.apiUrl}/slides/${id}`);
+  deleteSlide(slideId: number): Observable<Slide> {
+    return this.http.delete<Slide>(`${environment.apiUrl}/slides/${slideId}`);
   }
 }

@@ -2,7 +2,7 @@ import { Carousel } from "./carousel";
 import { QuillContent } from "./quill-content";
 
 export class Slide {
-  id: number;
+  id?: number;
   title: string;
   quillContents: QuillContent;
   carousel: Carousel;

@@ -1,7 +1,7 @@
 import { Slide } from "./slide";
 
 export class QuillContent {
-  id: number;
+  id?: number;
   width: number;
   height: number;
   x: number;

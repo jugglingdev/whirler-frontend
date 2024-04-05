@@ -1,5 +1,5 @@
 export class Tag {
-  id: number;
+  id?: number;
   name: string;
 
   constructor(tag: any) {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Carousel } from '../shared/carousel.model';
+import { Carousel } from '../../models/carousel';
 
 @Component({
   selector: 'app-dashboard',

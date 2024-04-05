@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { AuthService } from './shared/auth/auth.service';
+import { AuthService } from './auth/auth.service';
 import { Subscription, filter } from 'rxjs';
 
 @Component({

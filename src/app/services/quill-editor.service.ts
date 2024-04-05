@@ -3,7 +3,7 @@ import Quill from 'quill';
 import Delta from 'quill-delta';
 import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 import { Subject } from "rxjs";
-import { QuillContent } from "./quill-content.model";
+import { QuillContent } from "../models/quill-content";
 
 @Injectable({providedIn: 'root'})
 export class QuillEditorService {
@@ -54,21 +54,22 @@ export class QuillEditorService {
 
   getCurrentQuillContent(): QuillContent {
     return {
-      width: this.quillDimensions.width.toString(),
-      height: this.quillDimensions.height.toString(),
-      x: this.quillDimensions.x.toString(),
-      y: this.quillDimensions.y.toString(),
+      width: this.quillDimensions.width,
+      height: this.quillDimensions.height,
+      x: this.quillDimensions.x,
+      y: this.quillDimensions.y,
       delta: this.getQuillDelta()
     };
   }
 
   setCurrentQuillContent(delta: Delta): QuillContent {
     return new QuillContent(
-      this.quillDimensions.width.toString(),
-      this.quillDimensions.height.toString(),
-      this.quillDimensions.x.toString(),
-      this.quillDimensions.y.toString(),
-      delta
+      this.quillDimensions.width,
+      this.quillDimensions.height,
+      this.quillDimensions.x,
+      this.quillDimensions.y,
+      delta,
+
     );
   }
 

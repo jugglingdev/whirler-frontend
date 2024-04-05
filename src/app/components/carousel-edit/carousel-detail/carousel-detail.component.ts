@@ -3,7 +3,7 @@ import DeltaStatic from 'quill-delta';
 import Delta from 'quill-delta';
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import { QuillEditorComponent } from './quill-editor/quill-editor.component';
-import { QuillEditorService } from './quill-editor/quill-editor.service';
+import { QuillEditorService } from '../../../services/quill-editor.service';
 import { QuillContent } from './quill-editor/quill-content.model';
 
 @Component({
