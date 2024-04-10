@@ -1,7 +1,7 @@
 <div class="carousel-detail">
 
   <div class="slider">
-    <button class="button-previous"> < </button>
+    <button class="button-previous" (click)="onPreviousSlide()"> < </button>
 
     <div class="current-slide" (dblclick)="onActivateEditor()" #currentSlide>
       <app-quill-editor
@@ -12,6 +12,6 @@
       <app-slide *ngIf="mode == 'presentation'" [slideContent]="slideContent"></app-slide>
     </div>
 
-    <button class="button-next"> > </button>
+    <button class="button-next" (click)="onNextSlide()"> > </button>
   </div>
 </div>

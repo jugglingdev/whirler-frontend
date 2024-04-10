@@ -1,20 +1,31 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { QuillEditorComponent } from './quill-editor/quill-editor.component';
 import { QuillEditorService } from 'src/app/services/quill-editor.service';
 import { QuillContent } from 'src/app/models/quill-content';
 import { CarouselService } from 'src/app/services/carousel.service';
+import { Slide } from 'src/app/models/slide';
+import { SlideService } from 'src/app/services/slide.service';
 
 @Component({
   selector: 'app-carousel-detail',
   templateUrl: './carousel-detail.component.html',
   styleUrls: ['./carousel-detail.component.scss']
 })
-export class CarouselDetailComponent {
+export class CarouselDetailComponent implements OnInit {
+  @Input() carouselId: number;
+  currentSlide: Slide;
+
   @ViewChild(QuillEditorComponent) quillEditorComponent: QuillEditorComponent;
   mode: string = 'presentation';
   slideContent: string;
 
-  constructor(private carouselService: CarouselService, private quillEditorService: QuillEditorService) {}
+  constructor(private carouselService: CarouselService, private slideService: SlideService, private quillEditorService: QuillEditorService) {}
+
+  ngOnInit(): void {
+    this.slideService.getSlides(this.carouselId).subscribe((slides) => {
+      this.currentSlide = slides[0];
+    })
+  }
 
   onActivateEditor(): void {
     this.mode = 'editContent';
@@ -25,9 +36,21 @@ export class CarouselDetailComponent {
     if (this.mode !== 'presentation') {
       event.preventDefault();
       this.mode = 'presentation';
-      const quillContent: QuillContent = this.quillEditorService.getCurrentQuillContent(slide);
-      this.quillEditorService.updateSlideContent(quillContent);
+      const quillContent: QuillContent = this.quillEditorService.getCurrentQuillContent(this.currentSlide);
+      this.slideContent = this.quillEditorService.updateSlideContent(quillContent).html;
     }
+  }
+
+  onPreviousSlide() {
+    this.slideService.getSlideById(this.currentSlide.id).subscribe((slide) => {
+      this.currentSlide = slide;
+    })
+  }
+
+  onNextSlide() {
+    this.slideService.getSlideById(this.currentSlide.id).subscribe((slide) => {
+      this.currentSlide = slide;
+    })
   }
 
 }
