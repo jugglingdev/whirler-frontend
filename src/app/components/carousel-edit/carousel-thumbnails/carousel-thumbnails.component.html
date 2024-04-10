@@ -1,11 +1,5 @@
-<div class="thumbnails">
+<div class="thumbnails" *ngFor="let slide of slides">
   <div class="thumbnail">
-    <h1>Slide 1</h1>
-  </div>
-  <div class="thumbnail">
-    <h1>Slide 2</h1>
-  </div>
-  <div class="thumbnail">
-    <h1>Slide 3</h1>
+    <h1>Slide ID: {{slide.id}}</h1>
   </div>
 </div>
