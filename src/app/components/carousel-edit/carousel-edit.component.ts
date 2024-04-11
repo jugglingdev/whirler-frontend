@@ -11,7 +11,7 @@ import { CarouselService } from '../../services/carousel.service';
 })
 export class CarouselEditComponent implements OnInit {
   carouselId: number;
-  carousel: Carousel;
+  currentCarousel: Carousel;
 
   constructor (private route: ActivatedRoute, private carouselService: CarouselService, private slideService: SlideService) {}
 
@@ -21,7 +21,7 @@ export class CarouselEditComponent implements OnInit {
       });
 
       this.carouselService.getCarouselById(this.carouselId).subscribe((carousel) => {
-        this.carousel = carousel;
+        this.currentCarousel = carousel;
       })
   }
 

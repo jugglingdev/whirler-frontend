@@ -12,8 +12,10 @@ import { SlideService } from 'src/app/services/slide.service';
   styleUrls: ['./carousel-detail.component.scss']
 })
 export class CarouselDetailComponent implements OnInit {
-  @Input() carouselId: number;
+  @Input('carouselId') carouselId: number;
+  slides: Slide[];
   currentSlide: Slide;
+  currentSlideIndex: number;
 
   @ViewChild(QuillEditorComponent) quillEditorComponent: QuillEditorComponent;
   mode: string = 'presentation';
@@ -23,7 +25,9 @@ export class CarouselDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.slideService.getSlides(this.carouselId).subscribe((slides) => {
+      this.slides = slides;
       this.currentSlide = slides[0];
+      this.currentSlideIndex = 0;
     })
   }
 
@@ -42,15 +46,13 @@ export class CarouselDetailComponent implements OnInit {
   }
 
   onPreviousSlide() {
-    this.slideService.getSlideById(this.currentSlide.id).subscribe((slide) => {
-      this.currentSlide = slide;
-    })
+    let newSlideIndex = this.currentSlideIndex - 1;
+    this.currentSlide = this.slides[newSlideIndex];
   }
 
   onNextSlide() {
-    this.slideService.getSlideById(this.currentSlide.id).subscribe((slide) => {
-      this.currentSlide = slide;
-    })
+    let newSlideIndex = this.currentSlideIndex + 1;
+    this.currentSlide = this.slides[newSlideIndex];
   }
 
 }

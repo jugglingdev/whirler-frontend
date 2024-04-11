@@ -8,7 +8,7 @@ import { SlideService } from 'src/app/services/slide.service';
   styleUrls: ['./carousel-thumbnails.component.scss']
 })
 export class CarouselThumbnailsComponent implements OnInit {
-  @Input() carouselId: number;
+  @Input('carouselId') carouselId: number;
   slides: Slide[];
 
   constructor(private slideService: SlideService) {}
