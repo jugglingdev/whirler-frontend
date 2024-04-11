@@ -18,7 +18,7 @@ import { CarouselListComponent } from './components/dashboard/carousel-list/caro
 import { CarouselEditComponent } from './components/carousel-edit/carousel-edit.component';
 import { CarouselDetailComponent } from './components/carousel-edit/carousel-detail/carousel-detail.component';
 import { CarouselThumbnailsComponent } from './components/carousel-edit/carousel-thumbnails/carousel-thumbnails.component';
-import { SlideComponent } from './components/carousel-edit/slide/slide.component';
+import { SlideComponent } from './components/carousel-edit/carousel-detail/slide/slide.component';
 import { QuillEditorComponent } from './components/carousel-edit/carousel-detail/quill-editor/quill-editor.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { EditableComponent } from './components/carousel-edit/carousel-detail/quill-editor/editable/editable.component';
