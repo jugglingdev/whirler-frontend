@@ -18,4 +18,8 @@ export class CarouselThumbnailsComponent implements OnInit {
       this.slides = slides;
     })
   }
+
+  onDeleteSlide(slide) {
+    this.slideService.deleteSlide(slide);
+  }
 }

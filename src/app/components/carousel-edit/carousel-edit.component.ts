@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SlideService } from '../../services/slide.service';
-import { Carousel } from '../../models/carousel';
-import { CarouselService } from '../../services/carousel.service';
+import { SlideService } from 'src/app/services/slide.service';
+import { Carousel } from 'src/app/models/carousel';
+import { CarouselService } from 'src/app/services/carousel.service';
+import { QuillContentService } from 'src/app/services/quill-content.service';
+import { Slide } from 'src/app/models/slide';
+import { QuillContent } from 'src/app/models/quill-content';
 
 @Component({
   selector: 'app-carousel-edit',
@@ -12,8 +15,16 @@ import { CarouselService } from '../../services/carousel.service';
 export class CarouselEditComponent implements OnInit {
   carouselId: number;
   currentCarousel: Carousel;
+  currentSlide: Slide;
+  currentQuillContent: QuillContent;
+  mode: string = 'edit';
 
-  constructor (private route: ActivatedRoute, private carouselService: CarouselService, private slideService: SlideService) {}
+  constructor (
+    private route: ActivatedRoute,
+    private carouselService: CarouselService,
+    private slideService: SlideService,
+    private quillContentService: QuillContentService
+  ) {}
 
   ngOnInit(): void {
       this.route.params.subscribe(params => {
@@ -26,14 +37,16 @@ export class CarouselEditComponent implements OnInit {
   }
 
   onSave() {
-    // update QuillContent and Slides array
-    // send updated Slides array to Firebase
-    // if in presentation mode, stay in presentation mode; if in editor mode, stay in editor mode
+    this.quillContentService.updateQuillContent(this.currentQuillContent);
   }
 
   onAddSlide() {
-    // Add empty slide to Slides array
-    // Change Carousel Detail slide to new empty slide
-    // Open editor on new empty slide
+    this.currentSlide = new Slide({});
+    this.slideService.createSlide(this.carouselId, this.currentSlide);
+  }
+
+  onSwitchMode() {
+    this.onSave();
+    this.mode = 'presentation';
   }
 }

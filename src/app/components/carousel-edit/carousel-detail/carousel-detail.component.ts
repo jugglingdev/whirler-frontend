@@ -35,15 +35,15 @@ export class CarouselDetailComponent implements OnInit {
     this.mode = 'editContent';
   }
 
-  @HostListener('document:keydown.escape', ['$event'])
-  deactivateEditor(event: KeyboardEvent) {
-    if (this.mode !== 'presentation') {
-      event.preventDefault();
-      this.mode = 'presentation';
-      const quillContent: QuillContent = this.quillEditorService.getCurrentQuillContent(this.currentSlide);
-      this.slideContent = this.quillEditorService.updateSlideContent(quillContent).html;
-    }
-  }
+  // @HostListener('document:keydown.escape', ['$event'])
+  // deactivateEditor(event: KeyboardEvent) {
+  //   if (this.mode !== 'presentation') {
+  //     event.preventDefault();
+  //     this.mode = 'presentation';
+  //     const quillContent: QuillContent = this.quillEditorService.getCurrentQuillContent(this.currentSlide);
+  //     this.slideContent = this.quillEditorService.updateSlideContent(quillContent).html;
+  //   }
+  // }
 
   onPreviousSlide() {
     let newSlideIndex = this.currentSlideIndex - 1;

@@ -29,7 +29,7 @@ header {
     display: flex;
     gap: 20px;
 
-    .add-slide {
+    .growing-button {
       width: 2.25rem;
       border-radius: 50%;
       padding: 0.15rem 0;
@@ -59,9 +59,21 @@ header {
 
       &:hover::after {
         margin-left: 4px;
-        content: 'Add Slide';
         white-space: nowrap;
         color: $primary-light;
+      }
+    }
+
+    .add-slide:hover::after {
+      content: 'Add Slide';
+    }
+
+    .switch-mode:hover {
+      width: 18rem;
+      text-wrap: nowrap;
+
+      &::after {
+        content: 'Switch to Presentation Mode';
       }
     }
   }
