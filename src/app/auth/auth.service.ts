@@ -19,31 +19,36 @@ export class AuthService {
   autoLogin() {
     const token = this.getToken();
 
-    if (token) {
+    if (token && !this.checkExpiry()) {
       this.tokenSubject.next(token);
+      this.setExpiryTimer();
     }
   }
 
 	login(username: string, password: string): Observable<{token: string}> {
-    this.expiryTimer = setInterval(() => { this.checkExpiry(); }, 60000);
-		return this.http.post<{ token: string }>(`${environment.apiUrl}/login`, {
-			username,
+    return this.http.post<{ token: string }>(`${environment.apiUrl}/login`, {
+      username,
 			password,
-		});
+    });
 	}
 
   signup(user: User): Observable<{token: string}> {
     return this.http.post<{ token: string }>(`${environment.apiUrl}/signup`, user);
   }
 
+	setToken(token: string) {
+    localStorage.setItem('token', token);
+		this.tokenSubject.next(token);
+    this.setExpiryTimer();
+	}
+
+  setExpiryTimer() {
+    this.expiryTimer = setInterval(() => { this.checkExpiry(); }, 60000);
+  }
+
   parseErrorMessage(error): string {
     return JSON.stringify(error.error);
   }
-
-	setToken(token: string) {
-		localStorage.setItem('token', token);
-		this.tokenSubject.next(token);
-	}
 
 	getToken(): string | undefined {
 		return localStorage.getItem('token');
@@ -60,8 +65,12 @@ export class AuthService {
 		this.router.navigate(['/login']);
 	}
 
-  private checkExpiry(): void {
-    if (this.tokenIsExpired()) this.logout();
+  private checkExpiry(): boolean {
+    if (this.tokenIsExpired()) {
+      this.logout();
+      return true;
+    }
+    return false;
   }
 
   private tokenIsExpired(): boolean {
