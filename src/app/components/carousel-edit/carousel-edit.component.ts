@@ -45,6 +45,11 @@ export class CarouselEditComponent implements OnInit {
     this.slideService.createSlide(this.carouselId, this.currentSlide);
   }
 
+  onAddContent() {
+    this.currentQuillContent = new QuillContent({});
+    this.quillContentService.createQuillContent(this.currentSlide.id, this.currentQuillContent);
+  }
+
   onSwitchMode() {
     this.onSave();
     this.mode = 'presentation';

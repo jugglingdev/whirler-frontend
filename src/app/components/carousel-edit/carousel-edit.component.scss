@@ -68,6 +68,10 @@ header {
       content: 'Add Slide';
     }
 
+    .add-content:hover::after {
+      content: 'Add Content';
+    }
+
     .switch-mode:hover {
       width: 18rem;
       text-wrap: nowrap;
