@@ -45,13 +45,12 @@ export class CarouselEditComponent implements OnInit {
 
       this.slideService.getSlides(this.carouselId).subscribe({
         next: (slides) => {
-          if (slides) {
+          if (slides.length !== 0) {
             this.slides = slides;
             this.currentSlide = slides[0];
           } else {
             this.currentSlide = new Slide({});
           }
-          console.log('Current Slide:', this.currentSlide);
           this.fetchQuillContents();
         },
         error: (error) => {
