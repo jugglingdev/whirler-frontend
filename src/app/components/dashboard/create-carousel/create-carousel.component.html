@@ -16,8 +16,8 @@
       <div class="tag-input-container" formArrayName="tags">
         <div class="tag-inputs" *ngFor="let tag of tags.controls; let i = index">
           <input type="text"
-                 [formControl]="tag"
-                 [matAutocomplete]="auto">
+            [formControl]="tag"
+            [matAutocomplete]="auto">
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
             <mat-option [value]="tag.value">Create New Tag</mat-option>
             @for (option of options; track option) {

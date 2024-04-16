@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SlideService } from 'src/app/services/slide.service';
 import { Carousel } from 'src/app/models/carousel';
@@ -6,7 +6,7 @@ import { CarouselService } from 'src/app/services/carousel.service';
 import { QuillContentService } from 'src/app/services/quill-content.service';
 import { Slide } from 'src/app/models/slide';
 import { QuillContent } from 'src/app/models/quill-content';
-import { QuillEditorComponent } from './quill-editor/quill-editor.component';
+import { QuillEditorComponent } from 'src/app/components/carousel-edit/quill-editor/quill-editor.component';
 
 @Component({
   selector: 'app-carousel-edit',
@@ -14,7 +14,7 @@ import { QuillEditorComponent } from './quill-editor/quill-editor.component';
   styleUrls: ['./carousel-edit.component.scss']
 })
 export class CarouselEditComponent implements OnInit {
-  mode: string = 'edit';
+  viewMode: string = 'default';
 
   carouselId: number;
   currentCarousel: Carousel;
@@ -22,9 +22,10 @@ export class CarouselEditComponent implements OnInit {
   slides: Slide[];
   currentSlide: Slide;
   currentSlideIndex: number = 0;
+  @ViewChild('slideDetail') slideDetail: ElementRef;
 
   currentQuillContent: QuillContent;
-  @ViewChild(QuillEditorComponent) quillEditorComponent: QuillEditorComponent;
+  // @ViewChild(QuillEditorComponent) quillEditorComponent: QuillEditorComponent;
 
   constructor (
     private route: ActivatedRoute,
@@ -60,7 +61,14 @@ export class CarouselEditComponent implements OnInit {
   }
 
   onActivateEditor(): void {
-    this.mode = 'edit';
+    this.viewMode = 'edit';
+  }
+
+  @HostListener('document:mousedown', ['$event'])
+  onGlobalClick(event: Event): void {
+    if (!this.slideDetail.nativeElement.contains(event.target)) {
+      this.viewMode = 'default';
+    }
   }
 
   onPreviousSlide() {
@@ -100,7 +108,7 @@ export class CarouselEditComponent implements OnInit {
 
   onSwitchMode() {
     this.onSave();
-    this.mode = 'presentation';
+    this.viewMode = 'presentation';
   }
 
   private fetchQuillContents() {

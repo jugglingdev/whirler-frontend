@@ -44,10 +44,12 @@
     </span>
   </div>
 
-<div #editorBorder class="editor-border"
+<div
+  #editorBorder
+  class="editor-border"
   cdkDrag
   [cdkDragBoundary]="currentSlide"
-  [cdkDragDisabled]="mode != 'dragAndDrop'"
+  [cdkDragDisabled]="editorMode != 'dragAndDrop'"
   (cdkDragEnded)="onDragEnded($event)"
   (mouseover)="onDragAndDropMode($event)">
   <div #editor>

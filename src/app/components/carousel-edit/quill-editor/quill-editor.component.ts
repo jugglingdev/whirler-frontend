@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import Quill from 'quill';
 import { EditablesDataService } from './editable/editables.service';
 import { LocalStorageStateService } from './editable/local-storage-state.service';
@@ -18,12 +18,13 @@ export class QuillEditorComponent implements AfterViewInit {
   // @ViewChild('quillEditorContainerTempHolder') quillEditorContainerTempHolder: ElementRef;
 
   @Input('currentSlide') currentSlide: ElementRef;
-  @Input('mode') mode: string;
+  @Input('editMode') editMode: string;
 
   quill: Quill;
   editables: any;
   editablesList: any;
   activeEditable: any;
+  editorMode: string = 'editContent';
 
   constructor(
     private editablesService: EditablesDataService,
@@ -67,7 +68,7 @@ export class QuillEditorComponent implements AfterViewInit {
     const cursor = window.getComputedStyle(event.target as Element).cursor;
     if (cursor == 'nwse-resize') return;
     if (event.target !== event.currentTarget) return;
-    this.mode = 'dragAndDrop';
+    this.editorMode = 'dragAndDrop';
     console.log("border-hover");
   }
 
@@ -81,7 +82,7 @@ export class QuillEditorComponent implements AfterViewInit {
     const x = boundingClientRect.x - parentPosition.left;
     const y = boundingClientRect.y - parentPosition.top;
 
-    this.mode = 'editContent';
+    this.editorMode = 'editContent';
     this.quillEditorService.setCurrentQuillContentDimensions(width, height, x, y);
   }
 

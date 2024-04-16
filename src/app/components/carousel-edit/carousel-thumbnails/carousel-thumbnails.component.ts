@@ -6,8 +6,7 @@ import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/d
 @Component({
   selector: 'app-carousel-thumbnails',
   templateUrl: './carousel-thumbnails.component.html',
-  styleUrls: ['./carousel-thumbnails.component.scss'],
-  imports: [CdkDropList, CdkDrag]
+  styleUrls: ['./carousel-thumbnails.component.scss']
 })
 export class CarouselThumbnailsComponent {
   @Input('slides') slides: Slide[];

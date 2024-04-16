@@ -3,6 +3,11 @@
   cdkDropList
   (cdkDropListDropped)="drop($event)">
     @for (slide of slides; track slide) {
-      <app-slide class="thumbnail" cdkDrag>{{ slide }}</app-slide>
+      <app-slide
+        class="thumbnail"
+        value="slide"
+        cdkDrag>
+          {{ slide }}
+      </app-slide>
     }
 </div>

@@ -20,16 +20,19 @@
   <div class="slider">
     <button class="button-previous" (click)="onPreviousSlide()"> < </button>
 
-    <div class="current-slide" (dblclick)="onActivateEditor()" #currentSlide>
-      <app-quill-editor
-        *ngIf="mode == 'edit'"
-        [currentSlide]="currentSlide"
-        [mode]="mode">
-      </app-quill-editor>
-      <app-slide
-        *ngIf="mode == 'presentation'"
-        [slideContent]="slideContent">
-      </app-slide>
+    <div
+      class="current-slide"
+      (click)="onActivateEditor()"
+      #slideDetail>
+        <app-quill-editor
+          *ngIf="viewMode == 'edit'"
+          [currentSlide]="currentSlide"
+          [viewMode]="viewMode">
+        </app-quill-editor>
+        <app-slide
+          *ngIf="viewMode == 'default'"
+          [slideContent]="slideContent">
+        </app-slide>
     </div>
 
     <button class="button-next" (click)="onNextSlide()"> > </button>
