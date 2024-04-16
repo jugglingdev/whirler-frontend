@@ -1,5 +1,8 @@
-<div class="thumbnails" *ngFor="let slide of slides">
-  <div class="thumbnail">
-    <p>{{slide?.id}}</p>
-  </div>
+<div
+  class="thumbnails"
+  cdkDropList
+  (cdkDropListDropped)="drop($event)">
+    @for (slide of slides; track slide) {
+      <app-slide class="thumbnail" cdkDrag>{{ slide }}</app-slide>
+    }
 </div>

@@ -2,12 +2,12 @@ import { Carousel } from "./carousel";
 
 export class Slide {
   id?: number;
-  title: string;
+  sortOrder: number;
   carousel: Carousel;
 
   constructor (slide: any) {
     this.id = slide.id || 0;
-    this.title = slide.title || '';
+    this.sortOrder = slide.sortOrder || 0;
     this.carousel = slide.carousel || new Carousel({});
   }
 }

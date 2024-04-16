@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation, ElementRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as DOMPurify from 'dompurify';
-import { QuillEditorService } from '../../../../services/quill-editor.service';
+import { QuillEditorService } from '../../../services/quill-editor.service';
 import { Slide } from 'src/app/models/slide';
 
 @Component({

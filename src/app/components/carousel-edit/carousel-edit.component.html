@@ -16,5 +16,24 @@
   </div>
 </header>
 
-<app-carousel-detail [carouselId]="carouselId"></app-carousel-detail>
-<app-carousel-thumbnails [carouselId]="carouselId"></app-carousel-thumbnails>
+<section class="carousel-detail">
+  <div class="slider">
+    <button class="button-previous" (click)="onPreviousSlide()"> < </button>
+
+    <div class="current-slide" (dblclick)="onActivateEditor()" #currentSlide>
+      <app-quill-editor
+        *ngIf="mode == 'edit'"
+        [currentSlide]="currentSlide"
+        [mode]="mode">
+      </app-quill-editor>
+      <app-slide
+        *ngIf="mode == 'presentation'"
+        [slideContent]="slideContent">
+      </app-slide>
+    </div>
+
+    <button class="button-next" (click)="onNextSlide()"> > </button>
+  </div>
+</section>
+
+<app-carousel-thumbnails [slides]="slides"></app-carousel-thumbnails>

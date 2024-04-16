@@ -1,4 +1,5 @@
 @import 'src/variables.scss';
+@import 'quill/dist/quill.snow.css';
 
 header {
   padding: 20px;
@@ -83,6 +84,119 @@ header {
   }
 }
 
+.carousel-detail {
+
+  margin: 100px auto 0 auto;
+  padding: 0px 30px;
+  max-width: 900px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  app-quill-editor {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &::ng-deep .ql-toolbar {
+      width: 80%;
+      max-width: 1020px;
+      border-radius: 12px;
+      background-color: #FFF;
+      border: 1px solid $secondary-dark;
+
+      position: fixed;
+      margin: 0 auto;
+      top: 100px;
+      align-self: center;
+    }
+
+    &::ng-deep .ql-container {
+      width: 100%;
+      height: 100%;
+
+      position: relative;
+      border: none;
+      overflow: hidden;
+      cursor: text;
+
+      &::ng-deep .ql-editor {
+        max-width: 100%;
+        max-height: 100%;
+        padding: 0;
+        overflow: hidden;
+
+        &.ql-blank::before {
+          position: absolute;
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 50px 0;
+
+    .current-slide {
+      background-color: #FFF;
+      width: 50%;
+      aspect-ratio: 1 / 1;
+      max-height: 420px;
+      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 60px 4px;
+
+      input,
+      textarea {
+        border: none;
+        outline: none;
+      }
+    }
+
+    button {
+      width: 7rem;
+      height: 7rem;
+      font-size: 5rem;
+
+      color: $primary-dark;
+      background-color: transparent;
+      border: none;
+      border-radius: 50%;
+      box-shadow: none;
+      cursor: pointer;
+      user-select: none;
+
+      transition: all .3s ease-in;
+      opacity: .5;
+
+      &:hover {
+        opacity: 1;
+        background-color: hsl(20, 86%, 94%);
+      }
+    }
+  }
+
+  app-slide {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
 
 
 

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
 import Quill from 'quill';
 import { EditablesDataService } from './editable/editables.service';
 import { LocalStorageStateService } from './editable/local-storage-state.service';
-import { QuillEditorService } from '../../../../services/quill-editor.service';
+import { QuillEditorService } from '../../../services/quill-editor.service';
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
 
 @Component({

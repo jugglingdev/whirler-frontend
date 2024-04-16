@@ -1,22 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Slide } from 'src/app/models/slide';
 import { SlideService } from 'src/app/services/slide.service';
+import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-carousel-thumbnails',
   templateUrl: './carousel-thumbnails.component.html',
-  styleUrls: ['./carousel-thumbnails.component.scss']
+  styleUrls: ['./carousel-thumbnails.component.scss'],
+  imports: [CdkDropList, CdkDrag]
 })
-export class CarouselThumbnailsComponent implements OnInit {
-  @Input('carouselId') carouselId: number;
-  slides: Slide[];
+export class CarouselThumbnailsComponent {
+  @Input('slides') slides: Slide[];
 
   constructor(private slideService: SlideService) {}
 
-  ngOnInit(): void {
-    this.slideService.getSlides(this.carouselId).subscribe((slides) => {
-      this.slides = slides;
-    })
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.slides, event.previousIndex, event.currentIndex);
   }
 
   onDeleteSlide(slide) {

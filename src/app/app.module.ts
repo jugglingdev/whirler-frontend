@@ -16,12 +16,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateCarouselComponent } from './components/dashboard/create-carousel/create-carousel.component';
 import { CarouselListComponent } from './components/dashboard/carousel-list/carousel-list.component';
 import { CarouselEditComponent } from './components/carousel-edit/carousel-edit.component';
-import { CarouselDetailComponent } from './components/carousel-edit/carousel-detail/carousel-detail.component';
 import { CarouselThumbnailsComponent } from './components/carousel-edit/carousel-thumbnails/carousel-thumbnails.component';
-import { SlideComponent } from './components/carousel-edit/carousel-detail/slide/slide.component';
-import { QuillEditorComponent } from './components/carousel-edit/carousel-detail/quill-editor/quill-editor.component';
+import { SlideComponent } from './components/carousel-edit/slide/slide.component';
+import { QuillEditorComponent } from './components/carousel-edit/quill-editor/quill-editor.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { EditableComponent } from './components/carousel-edit/carousel-detail/quill-editor/editable/editable.component';
+import { EditableComponent } from './components/carousel-edit/quill-editor/editable/editable.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +35,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SlideComponent,
     FooterComponent,
     PageNotFoundComponent,
-    CarouselDetailComponent,
     CarouselThumbnailsComponent,
     QuillEditorComponent,
     EditableComponent,
