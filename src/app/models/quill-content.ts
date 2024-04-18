@@ -16,6 +16,6 @@ export class QuillContent {
     this.x = quillContent.x || 0;
     this.y = quillContent.y || 0;
     this.delta = quillContent.delta || '';
-    this.slide = quillContent.slide || new Slide({});
+    this.slide = quillContent.slide;
   }
 }

@@ -8,6 +8,6 @@ export class Slide {
   constructor (slide: any) {
     this.id = slide.id || 0;
     this.sortOrder = slide.sortOrder || 0;
-    this.carousel = slide.carousel || new Carousel({});
+    this.carousel = slide.carousel;
   }
 }

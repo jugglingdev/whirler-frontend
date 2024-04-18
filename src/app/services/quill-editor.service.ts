@@ -46,10 +46,10 @@ export class QuillEditorService {
     this.quill.setContents(delta);
   }
 
-  convertHtmlToDelta(html: string): Delta {
-    const delta = this.quill.clipboard.convert({ html });
-    return delta;
-  }
+  // convertHtmlToDelta(html: string): Delta {
+  //   const delta = this.quill.clipboard.convert({ html });
+  //   return delta;
+  // }
 
   // QuillContent
 
@@ -64,15 +64,15 @@ export class QuillEditorService {
     };
   }
 
-  setCurrentQuillContent(delta: Delta): QuillContent {
-    return new QuillContent({
-      width: this.quillDimensions.width,
-      height: this.quillDimensions.height,
-      x: this.quillDimensions.x,
-      y: this.quillDimensions.y,
-      delta: delta
-    });
-  }
+  // setCurrentQuillContent(delta: Delta): QuillContent {
+  //   return new QuillContent({
+  //     width: this.quillDimensions.width,
+  //     height: this.quillDimensions.height,
+  //     x: this.quillDimensions.x,
+  //     y: this.quillDimensions.y,
+  //     delta: delta
+  //   });
+  // }
 
   setCurrentQuillContentDimensions(width, height, x, y) {
     this.quillDimensions.width = width,
@@ -81,9 +81,9 @@ export class QuillEditorService {
     this.quillDimensions.y = y
   }
 
-  getAllQuillContent() {
-    return this.quillContents.slice();
-  }
+  // getAllQuillContent() {
+  //   return this.quillContents.slice();
+  // }
 
   // Slides
 

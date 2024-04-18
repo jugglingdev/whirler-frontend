@@ -7,6 +7,7 @@ import { QuillContentService } from 'src/app/services/quill-content.service';
 import { Slide } from 'src/app/models/slide';
 import { QuillContent } from 'src/app/models/quill-content';
 import { QuillEditorComponent } from 'src/app/components/carousel-edit/quill-editor/quill-editor.component';
+import { QuillEditorService } from 'src/app/services/quill-editor.service';
 
 @Component({
   selector: 'app-carousel-edit',
@@ -19,11 +20,12 @@ export class CarouselEditComponent implements OnInit {
   carouselId: number;
   currentCarousel: Carousel;
 
-  slides: Slide[];
+  slides: Slide[] = [];
   currentSlide: Slide;
   currentSlideIndex: number = 0;
   @ViewChild('slideDetail') slideDetail: ElementRef;
 
+  quillContents: QuillContent[];
   currentQuillContent: QuillContent;
   // @ViewChild(QuillEditorComponent) quillEditorComponent: QuillEditorComponent;
 
@@ -31,7 +33,8 @@ export class CarouselEditComponent implements OnInit {
     private route: ActivatedRoute,
     private carouselService: CarouselService,
     private slideService: SlideService,
-    private quillContentService: QuillContentService
+    private quillContentService: QuillContentService,
+    private quillEditorService: QuillEditorService
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +53,14 @@ export class CarouselEditComponent implements OnInit {
             this.currentSlide = slides[0];
           } else {
             this.currentSlide = new Slide({});
+            this.slideService.createSlide(this.carouselId, this.currentSlide).subscribe({
+              next: (slide) => {
+                this.currentSlide = slide;
+              },
+              error: (error) => {
+                console.error(error);
+              }
+            });
           }
           this.fetchQuillContents();
         },
@@ -67,6 +78,10 @@ export class CarouselEditComponent implements OnInit {
   onGlobalClick(event: Event): void {
     if (!this.slideDetail.nativeElement.contains(event.target)) {
       this.viewMode = 'default';
+      this.quillContentService.updateQuillContent(this.currentQuillContent);
+      this.slideService.updateSlide(this.currentSlide);
+      console.log('Current Quill Content: ', this.currentQuillContent);
+      console.log('Current Slide: ', this.currentSlide);
     }
   }
 
@@ -91,8 +106,8 @@ export class CarouselEditComponent implements OnInit {
   }
 
   onSave() {
+    this.currentQuillContent = this.quillEditorService.getCurrentQuillContent(this.currentSlide);
     this.quillContentService.updateQuillContent(this.currentQuillContent);
-    // this.currentSlide = slides[0];
   }
 
       // @HostListener('document:keydown.escape', ['$event'])
@@ -113,15 +128,28 @@ export class CarouselEditComponent implements OnInit {
   private fetchQuillContents() {
     this.quillContentService.getQuillContents(this.currentSlide.id).subscribe({
       next: (quillContents) => {
-        if (this.currentSlide && quillContents) {
+        if (quillContents.length !== 0) {
+          this.quillContents = quillContents;
           this.currentQuillContent = quillContents[0];
         } else {
           this.currentQuillContent = new QuillContent({});
+          this.currentQuillContent.slide = this.currentSlide;
+          
+          console.log(this.currentQuillContent);
+          this.quillContentService.createQuillContent(this.currentSlide.id, this.currentQuillContent).subscribe({
+            next: (quillContent) => {
+              this.currentQuillContent = quillContent;
+            },
+            error: (error) => {
+              console.error(error);
+            }
+          });
         }
-        console.log('Current Quill Content: ', this.currentQuillContent);
       },
       error: (error) => {
         console.error(error);
+        console.log('Quill Contents: ', this.quillContents);
+        console.log('Current Quill Content: ', this.currentQuillContent);
       }
     });
   }

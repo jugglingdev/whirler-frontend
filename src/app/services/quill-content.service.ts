@@ -12,7 +12,7 @@ export class QuillContentService {
   constructor(private http: HttpClient) { }
 
   getQuillContents(slideId: number): Observable<QuillContent[]> {
-    return this.http.get<QuillContent[]>(`${environment.apiUrl}/sildes/${slideId}/quill_contents`);
+    return this.http.get<QuillContent[]>(`${environment.apiUrl}/slides/${slideId}/quill_contents`);
   }
 
   getQuillContentById(id: number): Observable<QuillContent> {
@@ -20,7 +20,7 @@ export class QuillContentService {
   }
 
   createQuillContent(slideId: number, quillContent: QuillContent): Observable<QuillContent> {
-    return this.http.post<QuillContent>(`${environment.apiUrl}/slides/${slideId}/quill-contents`, quillContent);
+    return this.http.post<QuillContent>(`${environment.apiUrl}/slides/${slideId}/quill_contents`, quillContent);
   }
 
   updateQuillContent(quillContent: QuillContent): Observable<QuillContent> {
